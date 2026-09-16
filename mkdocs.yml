@@ -47,7 +47,8 @@ nav:
           - 'HTB: Administrator (Medium)': Windows/administrator.md
       - 🐧 Linux:
           - 'THM: CherryBlossom (Hard)': linux/cherryblossom.md
-  - Тэги: tags.md
+  - 📓 Заметки: notes.md
+  - 🏷️ Тэги: tags.md
 
 markdown_extensions:
   - admonition            
