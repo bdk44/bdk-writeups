@@ -1,5 +1,5 @@
 site_name: .bdk writeups
-site_url: https://bdk44.github.io/bdk-writeups/
+site_url: https://bdk44.github.io/
 
 theme:
   name: material
@@ -46,7 +46,7 @@ nav:
       - 🪟 Windows:
           - 'HTB: Administrator (Medium)': Windows/administrator.md
       - 🐧 Linux:
-          - 'THM: CherryBlossom (Hard)': Linux/cherryblossom/cherryblossom.md
+          - 'THM: CherryBlossom (Hard)': linux/cherryblossom.md
   - Тэги: tags.md
 
 markdown_extensions:
