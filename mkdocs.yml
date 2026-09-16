@@ -1,0 +1,26 @@
+site_name: .bdk writeups
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Переключить на тёмную тему
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Переключить на светлую тему
+
+plugins:
+  - search
+
+nav:
+  - Главная: index.md
+
+markdown_extensions:
+  - admonition            
+  - pymdownx.details      
+  - pymdownx.superfences  
+  - pymdownx.highlight:
+      linenums: true      
