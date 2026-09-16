@@ -1,4 +1,5 @@
 site_name: .bdk writeups
+site_url: https://bdk44.github.io/bdk-writeups/
 
 theme:
   name: material
@@ -71,7 +72,7 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
       title: "Оглавление"
-  - attr_list
+  - attr_listпш
 
 extra_css:
   - stylesheets/custom.css
