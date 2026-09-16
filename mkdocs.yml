@@ -72,7 +72,7 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
       title: "Оглавление"
-  - attr_listпш
+  - attr_list
 
 extra_css:
   - stylesheets/custom.css
