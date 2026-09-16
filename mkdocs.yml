@@ -41,7 +41,7 @@ plugins:
       draggable: true
 
 nav:
-  - Главная: index.md
+  - 🏡 Главная: index.md
   - 📑 Райтапы:
       - 🪟 Windows:
           - 'HTB: Administrator (Medium)': Windows/administrator.md

@@ -125,7 +125,7 @@ tags:
 
 ### Исследование файла
 
-![Содержимое файла journal.txt](cblossom-journal.webp)
+![Содержимое файла journal.txt](images/cherryblossom/cblossom-journal.webp)
 /// screenshot
 Содержимое файла journal.txt
 ///
@@ -146,7 +146,7 @@ result: PNG image data, 1280 x 853, 8-bit/color RGB, non-interlaced
 ### Стеганография
 
 ??? note "Полученное изображение"
-    ![Изображение](cblossom-stego.webp)
+    ![Изображение](images/cherryblossom/cblossom-stego.webp)
 /// screenshot
 Полученное изображение
 ///
@@ -175,7 +175,7 @@ _journal.zip: JPEG image data
 
 В попытке восстановить поврежденный архив была предпринята попытка изменить магическое число файла на магическое число, присущее файлам с расширениям `.zip` (`50 4B 03 04`).
 
-![Изменение магического числа](cblossom-hexedit.webp)
+![Изменение магического числа](images/cherryblossom/cblossom-hexedit.webp)
 /// screenshot
 Изменение магического числа в hexedit
 ///
@@ -245,7 +245,7 @@ ATTENTION: the hashes might contain sensitive encrypted data. Be careful when sh
 
 С получением пароля данный архив можно открыть в вышеупомянутом приложении Cherrytree. В результате появится упорядоченный список различных заметок.
 
-![Cherrytree](cblossom-cherrytree.webp)
+![Cherrytree](images/cherryblossom/cblossom-cherrytree.webp)
 /// screenshot
 Приложение Cherrytree
 ///
@@ -254,7 +254,7 @@ ATTENTION: the hashes might contain sensitive encrypted data. Be careful when sh
 
 В одной из записей был обнаружен первый флаг.
 
-![Флаг в дневнике](cblossom-jflag.webp)
+![Флаг в дневнике](images/cherryblossom/cblossom-jflag.webp)
 /// screenshot
 Flag 1
 ///
@@ -295,7 +295,7 @@ lily@cherryblossom:/var/backups$ ls -la
 
 При исследовании окружения ранее было замечено наличие еще одной папки пользователя в директории `/home` по имени `johan`. Именно его хэш был извлечен из обнаруженного `shadow.bak`.
 
-![Содержимое shadow.bak](cblossom-johanpass.webp)
+![Содержимое shadow.bak](images/cherryblossom/cblossom-johanpass.webp)
 /// screenshot
 Содержимое shadow.bak
 ///
@@ -308,7 +308,7 @@ $ hashcat -a0 -m1800 '[REDACTED_HASH]' cherry-blossom.list
 
 С помощью полученного пароля был осуществлен вход за пользователя `johan`. В домашней директории пользовался находился второй флаг в файле `user.txt`.
 
-![Флаг user.txt](cblossom-userflag.webp)
+![Флаг user.txt](images/cherryblossom/cblossom-userflag.webp)
 /// screenshot
 Flag 2
 ///
@@ -317,7 +317,7 @@ Flag 2
 
 После получения доступа к системе в качестве `johan` было принято решение воспользоваться тулом `Linux Exploit Suggester` для сканирования системы на предмет CVE, к которым она уязвима.
 
-![Вывод LSE](cblossom-exploit_1.webp)
+![Вывод LSE](images/cherryblossom/cblossom-exploit_1.webp)
 /// screenshot
 Результат работы LSE
 ///
@@ -330,7 +330,7 @@ gcc exploit.c -o file_1 -static
 
 Уязвимость была успешно эксплуатирована, и в конечном итоге были получены рут права в системе. Третий флаг находился по пути `/root/root.txt`. Все три флага были добыты.
 
-![Флаг root.txt](cblossom-rootflag.webp)
+![Флаг root.txt](images/cherryblossom/cblossom-rootflag.webp)
 /// screenshot
 Flag 3
 ///
