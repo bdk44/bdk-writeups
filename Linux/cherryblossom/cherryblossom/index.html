@@ -1,0 +1,1137 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CherryBlossom - .bdk writeups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title=".bdk writeups" class="md-header__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            .bdk writeups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CherryBlossom
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Переключить на тёмную тему"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на тёмную тему" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Переключить на светлую тему"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title=".bdk writeups" class="md-nav__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    .bdk writeups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CherryBlossom
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CherryBlossom
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1039" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка — T1046, T1039
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1027003-t1110002-t1552001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Исследование файла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Стеганография
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Работа с архивами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Исследование записей
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-movement-t1003008-t1110002-t1021004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Movement и второй флаг — T1003.008, T1110.002, T1021.004
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1068" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Повышение привилегий, третий флаг — T1068
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1039" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка — T1046, T1039
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1027003-t1110002-t1552001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Исследование файла
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Стеганография
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Работа с архивами
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Исследование записей
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lateral-movement-t1003008-t1110002-t1021004" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lateral Movement и второй флаг — T1003.008, T1110.002, T1021.004
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1068" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Повышение привилегий, третий флаг — T1068
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">Linux</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">Stego</span>
+      
+    
+  </nav>
+
+
+
+  <h1>CherryBlossom</h1>
+
+<h2 id="_1">Резюме</h2>
+<p><strong>CherryBlossom</strong> — это комната сложности уровня <strong>Hard</strong> на TryHackMe за авторством MuirlandOracle. В данной комнате представлена машина на Linux. Все начинается со сканирования портов, после которого удается обнаружить открытый порт 445 с работающей службой SMB, где, как выясняется в ходе сканирования, возможен анонимный доступ. После подключения к SMB в доступной шаре был обнаружен закодированный с помощью base64 файл journal.txt. После декодирования и дальнейшего анализа файла было выяснено, что это на самом деле изображение формата png. Из изображения был извлечен файл с расширением .zip, однако <strong>file</strong> говорил о том, что это jpeg изображение. С помощью изменения магического числа удалось получить исправный архив, который был запаролен. После подбора пароля среди извлеченных файлов оказался 7z архив, который также был запаролен. После успешного подбора пароля содержимое данного архива удалось открыть в приложении Cherrytree (Flag 1). При исследовании содержимого дневника в Cherrytree был найден список паролей, а также имя пользователя lily, что в конечном итоге с помощью перебора пароля привело к получению доступа по SSH. После подключения к пользователю lily в ходе исследования окружения был обнаружен файл shadow.bak, который содержал хэши паролей пользователей в системе. Из данного файла был изъят хэш пароля пользователя johan, подбор пароля был выполнен с использованием ранее найденного списка паролей в приложении Cherrytree. После успешного подбора пароля было выполнено подключение по SSH за пользователя johan (Flag 2). Для дальнейшего повышения привилегий до рут-пользователя была обнаружена и эксплуатирована уязвимость CVE-2021-3493 (Flag 3). </p>
+<h2 id="_2">Цепочка атаки</h2>
+<blockquote>
+<p>SMB Null Session (Anonymous Login) → Data Deobfuscation (Base64) 
+→ Steganography (stegpy) → File Signature Manipulation (Magic Bytes Fix) 
+→ Archive Cracking (John the Ripper) → Information Disclosure (Cherrytree DB) 
+→ SSH Credential Stuffing (User: lily) → OS Credential Dumping (shadow.bak) 
+→ Hash Cracking → Lateral Movement (User: johan) → Sudo Vulnerability (CVE-2021-3493) → Root</p>
+</blockquote>
+<h2 id="mitre-attck-mapping">MITRE ATT&amp;CK Mapping</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Phase</th>
+<th style="text-align: center;">Tactic</th>
+<th style="text-align: center;">Technique</th>
+<th style="text-align: center;">ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Network Enumeration</td>
+<td style="text-align: center;">Discovery</td>
+<td style="text-align: center;">Network Service Discovery</td>
+<td style="text-align: center;">T1046</td>
+</tr>
+<tr>
+<td style="text-align: center;">Data Collection</td>
+<td style="text-align: center;">Collection</td>
+<td style="text-align: center;">Data from Network Shared Drive</td>
+<td style="text-align: center;">T1039</td>
+</tr>
+<tr>
+<td style="text-align: center;">Payload Extraction</td>
+<td style="text-align: center;">Defense Evasion</td>
+<td style="text-align: center;">Obfuscated Files or Information: Steganography</td>
+<td style="text-align: center;">T1027.003</td>
+</tr>
+<tr>
+<td style="text-align: center;">Offline Cracking</td>
+<td style="text-align: center;">Credential Access</td>
+<td style="text-align: center;">Brute Force: Password Cracking</td>
+<td style="text-align: center;">T1110.002</td>
+</tr>
+<tr>
+<td style="text-align: center;">Information Gathering</td>
+<td style="text-align: center;">Credential Access</td>
+<td style="text-align: center;">Unsecured Credentials: Credentials In Files</td>
+<td style="text-align: center;">T1552.001</td>
+</tr>
+<tr>
+<td style="text-align: center;">Initial Foothold</td>
+<td style="text-align: center;">Initial Access</td>
+<td style="text-align: center;">Valid Accounts: Local Accounts</td>
+<td style="text-align: center;">T1078.003</td>
+</tr>
+<tr>
+<td style="text-align: center;">Local Enumeration</td>
+<td style="text-align: center;">Credential Access</td>
+<td style="text-align: center;">OS Credential Dumping: /etc/shadow</td>
+<td style="text-align: center;">T1003.008</td>
+</tr>
+<tr>
+<td style="text-align: center;">Lateral Movement</td>
+<td style="text-align: center;">Lateral Movement</td>
+<td style="text-align: center;">Remote Services: SSH</td>
+<td style="text-align: center;">T1021.004</td>
+</tr>
+<tr>
+<td style="text-align: center;">Privilege Escalation</td>
+<td style="text-align: center;">Privelege Escalation</td>
+<td style="text-align: center;">Exploitation for Privilege Escalation</td>
+<td style="text-align: center;">T1068</td>
+</tr>
+</tbody>
+</table>
+<h2 id="t1046-t1039">Разведка — <code>T1046</code>, <code>T1039</code></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>nmap<span class="w"> </span>-sS<span class="w"> </span>-sC<span class="w"> </span>-p-<span class="w"> </span><span class="m">10</span>.113.182.130
+Starting<span class="w"> </span>Nmap<span class="w"> </span><span class="m">7</span>.99<span class="w"> </span><span class="o">(</span><span class="w"> </span>https://nmap.org<span class="w"> </span><span class="o">)</span><span class="w"> </span>at<span class="w"> </span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">05</span>:00<span class="w"> </span>-0400
+Nmap<span class="w"> </span>scan<span class="w"> </span>report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">10</span>.113.182.130
+Host<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span><span class="o">(</span><span class="m">0</span>.091s<span class="w"> </span>latency<span class="o">)</span>.
+Not<span class="w"> </span>shown:<span class="w"> </span><span class="m">65532</span><span class="w"> </span>closed<span class="w"> </span>tcp<span class="w"> </span>ports<span class="w"> </span><span class="o">(</span>reset<span class="o">)</span>
+PORT<span class="w">    </span>STATE<span class="w"> </span>SERVICE
+<span class="m">22</span>/tcp<span class="w">  </span>open<span class="w">  </span>ssh
+<span class="p">|</span><span class="w"> </span>ssh-hostkey:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">2048</span><span class="w"> </span><span class="m">21</span>:ee:30:4f:f8:f7:9f:32:6e:42:95:f2:1a:1a:04:d3<span class="w"> </span><span class="o">(</span>RSA<span class="o">)</span>
+<span class="p">|</span><span class="w">   </span><span class="m">256</span><span class="w"> </span>dc:fc:de:d6:ec:43:61:00:54:9b:7c:40:1e:8f:52:c4<span class="w"> </span><span class="o">(</span>ECDSA<span class="o">)</span>
+<span class="p">|</span>_<span class="w">  </span><span class="m">256</span><span class="w"> </span><span class="m">12</span>:81:25:6e:08:64:f6:ef:f5:0c:58:71:18:38:a5:c6<span class="w"> </span><span class="o">(</span>ED25519<span class="o">)</span>
+<span class="m">139</span>/tcp<span class="w"> </span>open<span class="w">  </span>netbios-ssn
+<span class="m">445</span>/tcp<span class="w"> </span>open<span class="w">  </span>microsoft-ds
+
+Host<span class="w"> </span>script<span class="w"> </span>results:
+<span class="p">|</span><span class="w"> </span>smb-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>account_used:<span class="w"> </span>guest
+<span class="p">|</span><span class="w">   </span>authentication_level:<span class="w"> </span>user
+<span class="p">|</span><span class="w">   </span>challenge_response:<span class="w"> </span>supported
+<span class="p">|</span>_<span class="w">  </span>message_signing:<span class="w"> </span>disabled<span class="w"> </span><span class="o">(</span>dangerous,<span class="w"> </span>but<span class="w"> </span>default<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>smb2-security-mode:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span><span class="m">3</span>.1.1:<span class="w"> </span>
+<span class="p">|</span>_<span class="w">    </span>Message<span class="w"> </span>signing<span class="w"> </span>enabled<span class="w"> </span>but<span class="w"> </span>not<span class="w"> </span>required
+<span class="p">|</span>_nbstat:<span class="w"> </span>NetBIOS<span class="w"> </span>name:<span class="w"> </span>UBUNTU,<span class="w"> </span>NetBIOS<span class="w"> </span>user:<span class="w"> </span>&lt;unknown&gt;,<span class="w"> </span>NetBIOS<span class="w"> </span>MAC:<span class="w"> </span>&lt;unknown&gt;<span class="w"> </span><span class="o">(</span>unknown<span class="o">)</span>
+<span class="p">|</span><span class="w"> </span>smb-os-discovery:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>OS:<span class="w"> </span>Windows<span class="w"> </span><span class="m">6</span>.1<span class="w"> </span><span class="o">(</span>Samba<span class="w"> </span><span class="m">4</span>.7.6-Ubuntu<span class="o">)</span>
+<span class="p">|</span><span class="w">   </span>Computer<span class="w"> </span>name:<span class="w"> </span>cherryblossom
+<span class="p">|</span><span class="w">   </span>NetBIOS<span class="w"> </span>computer<span class="w"> </span>name:<span class="w"> </span>UBUNTU<span class="se">\x</span><span class="m">00</span>
+<span class="p">|</span><span class="w">   </span>Domain<span class="w"> </span>name:<span class="w"> </span><span class="se">\x</span><span class="m">00</span>
+<span class="p">|</span><span class="w">   </span>FQDN:<span class="w"> </span>cherryblossom
+<span class="p">|</span>_<span class="w">  </span>System<span class="w"> </span>time:<span class="w"> </span><span class="m">2026</span>-07-01T10:04:05+01:00
+<span class="p">|</span><span class="w"> </span>smb2-time:<span class="w"> </span>
+<span class="p">|</span><span class="w">   </span>date:<span class="w"> </span><span class="m">2026</span>-07-01T09:04:05
+<span class="p">|</span>_<span class="w">  </span>start_date:<span class="w"> </span>N/A
+<span class="p">|</span>_clock-skew:<span class="w"> </span>mean:<span class="w"> </span>-19m58s,<span class="w"> </span>deviation:<span class="w"> </span>34m37s,<span class="w"> </span>median:<span class="w"> </span>0s
+
+Nmap<span class="w"> </span><span class="k">done</span>:<span class="w"> </span><span class="m">1</span><span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>host<span class="w"> </span>up<span class="o">)</span><span class="w"> </span>scanned<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">220</span>.76<span class="w"> </span>seconds
+</code></pre></div></td></tr></table></div>
+<p>Сканирование хоста с помощью <code>nmap</code> показало три сервиса на трёх открытых портах. Наиболее ценным на этот момент является сервис SMB на 445 порту. Кроме того, применение флага <code>-sC</code> позволило узнать, что к этому сервис разрешен анонимный доступ.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>smbclient<span class="w"> </span>-L<span class="w"> </span>//10.113.182.130/<span class="w"> </span>-N<span class="w">         </span>
+Anonymous<span class="w"> </span>login<span class="w"> </span>successful
+
+<span class="w">        </span>Sharename<span class="w">       </span>Type<span class="w">      </span>Comment
+<span class="w">        </span>---------<span class="w">       </span>----<span class="w">      </span>-------
+<span class="w">        </span>Anonymous<span class="w">       </span>Disk<span class="w">      </span>Anonymous<span class="w"> </span>File<span class="w"> </span>Server<span class="w"> </span>Share
+<span class="w">        </span>IPC$<span class="w">            </span>IPC<span class="w">       </span>IPC<span class="w"> </span>Service<span class="w"> </span><span class="o">(</span>Samba<span class="w"> </span><span class="m">4</span>.7.6-Ubuntu<span class="o">)</span>
+Reconnecting<span class="w"> </span>with<span class="w"> </span>SMB1<span class="w"> </span><span class="k">for</span><span class="w"> </span>workgroup<span class="w"> </span>listing.
+Anonymous<span class="w"> </span>login<span class="w"> </span>successful
+
+<span class="w">        </span>Server<span class="w">               </span>Comment
+<span class="w">        </span>---------<span class="w">            </span>-------
+
+<span class="w">        </span>Workgroup<span class="w">            </span>Master
+<span class="w">        </span>---------<span class="w">            </span>-------
+<span class="w">        </span>WORKGROUP<span class="w">            </span>UBUNTU
+</code></pre></div></td></tr></table></div>
+<p>После подключения к сервису была обнаружена шара Anonymous.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>smbclient<span class="w"> </span>//10.113.182.130/Anonymous<span class="w"> </span>-N
+Anonymous<span class="w"> </span>login<span class="w"> </span>successful
+Try<span class="w"> </span><span class="s2">"help"</span><span class="w"> </span>to<span class="w"> </span>get<span class="w"> </span>a<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>possible<span class="w"> </span>commands.
+smb:<span class="w"> </span><span class="se">\&gt;</span><span class="w"> </span>ls
+<span class="w">  </span>.<span class="w">                                   </span>D<span class="w">        </span><span class="m">0</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">19</span>:22:51<span class="w"> </span><span class="m">2020</span>
+<span class="w">  </span>..<span class="w">                                  </span>D<span class="w">        </span><span class="m">0</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">12</span>:48:18<span class="w"> </span><span class="m">2020</span>
+<span class="w">  </span>journal.txt<span class="w">                         </span>N<span class="w">  </span><span class="m">3470998</span><span class="w">  </span>Sun<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">19</span>:20:53<span class="w"> </span><span class="m">2020</span>
+
+<span class="w">                </span><span class="m">10253588</span><span class="w"> </span>blocks<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">1024</span>.<span class="w"> </span><span class="m">4680100</span><span class="w"> </span>blocks<span class="w"> </span>available
+smb:<span class="w"> </span><span class="se">\&gt;</span><span class="w"> </span>get<span class="w"> </span>journal.txt
+getting<span class="w"> </span>file<span class="w"> </span><span class="se">\j</span>ournal.txt<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">3470998</span><span class="w"> </span>as<span class="w"> </span>journal.txt<span class="w"> </span><span class="o">(</span><span class="m">1179</span>.4<span class="w"> </span>KiloBytes/sec<span class="o">)</span><span class="w"> </span><span class="o">(</span>average<span class="w"> </span><span class="m">1179</span>.4<span class="w"> </span>KiloBytes/sec<span class="o">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Внутри вышеупомянутой шары находился файл <code>journal.txt</code>.</p>
+<h2 id="t1027003-t1110002-t1552001">Анализ полученных данных и первый флаг — T1027.003, T1110.002, T1552.001</h2>
+<h3 id="_3">Исследование файла</h3>
+<p><img alt="Содержимое файла journal.txt" src="../cblossom-journal.webp" /></p>
+<p>Содержимое файла закодировано с помощью base64. Для декодирования была использована утилита <code>base64</code> с флагом <code>-d</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>journal.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>result
+</code></pre></div></td></tr></table></div>
+<p>После декодирования содержимое не приобрело читабельный вид, но при использовании утилиты <code>file</code> удалось обнаружить, что в результате декодирования было получено изображение формата png.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>result<span class="w">         </span>
+result:<span class="w"> </span>PNG<span class="w"> </span>image<span class="w"> </span>data,<span class="w"> </span><span class="m">1280</span><span class="w"> </span>x<span class="w"> </span><span class="m">853</span>,<span class="w"> </span><span class="m">8</span>-bit/color<span class="w"> </span>RGB,<span class="w"> </span>non-interlaced
+</code></pre></div></td></tr></table></div>
+<h3 id="_4">Стеганография</h3>
+<p><img alt="Изображение" src="../cblossom-stego.webp" /></p>
+<p>Для анализа изображения на наличие скрытых файлов был использован тул <code>stegpy</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>stegpy<span class="w"> </span>result
+File<span class="w"> </span>_journal.zip<span class="w"> </span>succesfully<span class="w"> </span>extracted<span class="w"> </span>from<span class="w"> </span>result
+</code></pre></div></td></tr></table></div>
+<p>Применение <code>stegpy</code> позволило извлечь скрытый архив формата <code>zip</code>, при распаковке которого возникла ошибка, сообщающая о том, что архив повреждён.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
+Archive:<span class="w">  </span>_journal.zip
+file<span class="w"> </span><span class="c1">#1:  bad zipfile offset (local header sig):  0</span>
+</code></pre></div></td></tr></table></div>
+<p>В ходе дальнейшего анализа полученного архива была применена утилита <code>file</code>, с помощью которой удалось узнать, что файл является изображением формата <code>jpeg</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>_journal.zip
+_journal.zip:<span class="w"> </span>JPEG<span class="w"> </span>image<span class="w"> </span>data
+</code></pre></div></td></tr></table></div>
+<p>В попытке восстановить поврежденный архив была предпринята попытка изменить магическое число файла на магическое число, присущее файлам с расширениям <code>.zip</code> (<code>50 4B 03 04</code>).</p>
+<p><img alt="Изменение магического числа" src="../cblossom-hexedit.webp" /></p>
+<p>Попытка с изменением магического числа увенчалась успехом, но в конечном итоге для распаковки архива потребовался пароль.</p>
+<h3 id="_5">Работа с архивами</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
+Archive:<span class="w">  </span>_journal.zip
+<span class="o">[</span>_journal.zip<span class="o">]</span><span class="w"> </span>Journal.ctz<span class="w"> </span>password:<span class="w"> </span>
+<span class="w">   </span>skipping:<span class="w"> </span>Journal.ctz<span class="w">             </span>incorrect<span class="w"> </span>password
+</code></pre></div></td></tr></table></div>
+<p>Для подбора пароля к архиву воспользовался связкой тулов <code>zip2john</code> + <code>JohnTheRipper</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>zip2john<span class="w"> </span>_journal.zip<span class="w"> </span>&gt;<span class="w"> </span>zip_hash.txt
+ver<span class="w"> </span><span class="m">2</span>.0<span class="w"> </span>efh<span class="w"> </span><span class="m">5455</span><span class="w"> </span>efh<span class="w"> </span><span class="m">7875</span><span class="w"> </span>_journal.zip/Journal.ctz<span class="w"> </span>PKZIP<span class="w"> </span>Encr:<span class="w"> </span>TS_chk,<span class="w"> </span><span class="nv">cmplen</span><span class="o">=</span><span class="m">70461</span>,<span class="w"> </span><span class="nv">decmplen</span><span class="o">=</span><span class="m">70434</span>,<span class="w"> </span><span class="nv">crc</span><span class="o">=</span>0B987D84<span class="w"> </span><span class="nv">ts</span><span class="o">=</span><span class="m">0035</span><span class="w"> </span><span class="nv">cs</span><span class="o">=</span><span class="m">0035</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span><span class="m">8</span>
+</code></pre></div></td></tr></table></div>
+<p>Получшившийся после применения <code>zip2john</code> хэш необходимо передать <code>JohnTheRipper</code> для осуществления подбора пароля. В качестве словаря использовался <code>rockyou.txt</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>zip_hash.txt
+Loaded<span class="w"> </span><span class="m">1</span><span class="w"> </span>password<span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="o">(</span>PKZIP<span class="w"> </span><span class="o">[</span><span class="m">32</span>/64<span class="o">])</span>
+Press<span class="w"> </span><span class="s1">'q'</span><span class="w"> </span>or<span class="w"> </span>Ctrl-C<span class="w"> </span>to<span class="w"> </span>abort,<span class="w"> </span>almost<span class="w"> </span>any<span class="w"> </span>other<span class="w"> </span>key<span class="w"> </span><span class="k">for</span><span class="w"> </span>status
+<span class="o">[</span>REDACTED<span class="o">]</span><span class="w">        </span><span class="o">(</span>_journal.zip/Journal.ctz<span class="o">)</span><span class="w">     </span>
+1g<span class="w"> </span><span class="m">0</span>:00:00:00<span class="w"> </span>DONE<span class="w"> </span><span class="o">(</span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">06</span>:39<span class="o">)</span><span class="w"> </span><span class="m">50</span>.00g/s<span class="w"> </span>409600p/s<span class="w"> </span>409600c/s<span class="w"> </span>409600C/s<span class="w"> </span><span class="m">123456</span>..whitetiger
+</code></pre></div></td></tr></table></div>
+<p>При помощи полученного пароля было извлечено содержимое архива.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>unzip<span class="w"> </span>_journal.zip
+Archive:<span class="w">  </span>_journal.zip
+<span class="o">[</span>_journal.zip<span class="o">]</span><span class="w"> </span>Journal.ctz<span class="w"> </span>password:<span class="w"> </span>
+<span class="w">  </span>inflating:<span class="w"> </span>Journal.ctz<span class="w"> </span>
+</code></pre></div></td></tr></table></div>
+<p>Внутри архива находился ещё один архив, который точно также требовал пароль для распаковки содержимого. Это архив формата <code>7z</code>, который является производной приложения Cherrytree, являющимся хранилищем заметок. Этот архив можно открыть в данном приложении.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>Journal.ctz<span class="w"> </span>
+Journal.ctz:<span class="w"> </span><span class="m">7</span>-zip<span class="w"> </span>archive<span class="w"> </span>data,<span class="w"> </span>version<span class="w"> </span><span class="m">0</span>.4
+</code></pre></div></td></tr></table></div>
+<p>Для того, чтобы осуществить подбор пароля для архива формата <code>7z</code>, воспользовался связкой тулов <code>7z2john</code> + <code>JohnTheRipper</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>7z2john<span class="w"> </span>Journal.ctz<span class="w"> </span>&gt;<span class="w"> </span>7z_hash.txt
+ATTENTION:<span class="w"> </span>the<span class="w"> </span>hashes<span class="w"> </span>might<span class="w"> </span>contain<span class="w"> </span>sensitive<span class="w"> </span>encrypted<span class="w"> </span>data.<span class="w"> </span>Be<span class="w"> </span>careful<span class="w"> </span>when<span class="w"> </span>sharing<span class="w"> </span>or<span class="w"> </span>posting<span class="w"> </span>these<span class="w"> </span>hashes
+</code></pre></div></td></tr></table></div>
+<p>Полученный при использовании <code>7z2john</code> хэш необходимо вновь передать <code>JohnTheRipper</code> для подбора пароля. Использовался словарь <code>rockyou.txt</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>john<span class="w"> </span>--wordlist<span class="o">=</span>rockyou.txt<span class="w"> </span>7z_hash.txt<span class="w"> </span>
+Using<span class="w"> </span>default<span class="w"> </span>input<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
+Loaded<span class="w"> </span><span class="m">1</span><span class="w"> </span>password<span class="w"> </span><span class="nb">hash</span><span class="w"> </span><span class="o">(</span>7z,<span class="w"> </span><span class="m">7</span>-Zip<span class="w"> </span>archive<span class="w"> </span>encryption<span class="w"> </span><span class="o">[</span>SHA256<span class="w"> </span><span class="m">256</span>/256<span class="w"> </span>AVX2<span class="w"> </span>8x<span class="w"> </span>AES<span class="o">])</span>
+<span class="o">[</span>REDACTED<span class="o">]</span><span class="w">        </span><span class="o">(</span>Journal.ctz<span class="o">)</span><span class="w">     </span>
+1g<span class="w"> </span><span class="m">0</span>:00:01:19<span class="w"> </span>DONE<span class="w"> </span><span class="o">(</span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">06</span>:55<span class="o">)</span><span class="w"> </span><span class="m">0</span>.01264g/s<span class="w"> </span><span class="m">70</span>.79p/s<span class="w"> </span><span class="m">70</span>.79c/s<span class="w"> </span><span class="m">70</span>.79C/s<span class="w"> </span>spartans..inferno
+</code></pre></div></td></tr></table></div>
+<p>С получением пароля данный архив можно открыть в вышеупомянутом приложении Cherrytree. В результате появится упорядоченный список различных заметок.</p>
+<p><img alt="Cherrytree" src="../cblossom-cherrytree.webp" /></p>
+<h3 id="_6">Исследование записей</h3>
+<p>В одной из записей был обнаружен первый флаг.</p>
+<p><img alt="Флаг в дневнике" src="../cblossom-jflag.webp" /></p>
+<p>Среди записей была обнаружена ещё одна примечательная: в ней автор рассказывал о составленном им списке паролей. Сам список паролей был прикреплен к одной из записей. Кроме того, было упомянуто имя <code>lily</code>. С учетом полученного имени пользователя и списка паролей было решено воспользоваться <code>hydra</code> для подбора пароля и дальнейшего подключения к ssh (22 порт).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>hydra<span class="w"> </span>-l<span class="w"> </span>lily<span class="w"> </span>-P<span class="w"> </span>cherry-blossom.list<span class="w"> </span>ssh://10.113.182.130
+
+Hydra<span class="w"> </span><span class="o">(</span>https://github.com/vanhauser-thc/thc-hydra<span class="o">)</span><span class="w"> </span>starting<span class="w"> </span>at<span class="w"> </span><span class="m">2026</span>-07-01<span class="w"> </span><span class="m">07</span>:14:58
+<span class="o">[</span><span class="m">22</span><span class="o">][</span>ssh<span class="o">]</span><span class="w"> </span>host:<span class="w"> </span><span class="m">10</span>.113.182.130<span class="w">   </span>login:<span class="w"> </span>lily<span class="w">   </span>password:<span class="w"> </span><span class="o">[</span>REDACTED<span class="o">]</span>
+<span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>target<span class="w"> </span>successfully<span class="w"> </span>completed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>valid<span class="w"> </span>password<span class="w"> </span>found
+</code></pre></div></td></tr></table></div>
+<p>После успешного подбора пароля был осуществлён успешный вход по ssh за пользователя <code>lily</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>lily@10.113.182.130
+
+
+<span class="w">        </span><span class="c1">#####################################</span>
+<span class="w">        </span><span class="c1">##########  Welcome, Lily  ##########</span>
+<span class="w">        </span><span class="c1">#####################################</span>
+
+lily@cherryblossom:~$<span class="w"> </span>
+</code></pre></div></td></tr></table></div>
+<h2 id="lateral-movement-t1003008-t1110002-t1021004">Lateral Movement и второй флаг — <code>T1003.008</code>, <code>T1110.002</code>, <code>T1021.004</code></h2>
+<p>После успешного входа за <code>lily</code> было выполнено исследование окружение, которое в конечном итоге позволило обнаружить бэкап файла <code>shadow</code> по пути <code>/var/backups/shadow.bak</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>lily@cherryblossom:/var/backups$<span class="w"> </span>ls<span class="w"> </span>-la
+
+-r--r--r--<span class="w">  </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>shadow<span class="w">    </span><span class="m">1481</span><span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w">  </span><span class="m">2020</span><span class="w"> </span>shadow.bak
+</code></pre></div></td></tr></table></div>
+<p>При исследовании окружения ранее было замечено наличие еще одной папки пользователя в директории <code>/home</code> по имени <code>johan</code>. Именно его хэш был извлечен из обнаруженного <code>shadow.bak</code>.</p>
+<p><img alt="Содержимое shadow.bak" src="../cblossom-johanpass.webp" /></p>
+<p>Для подбора пароля с использованием полученного хэша был применен тул <code>hashcat</code>. Использовался ранее полученный словарь в приложении Cherrytree.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>$<span class="w"> </span>hashcat<span class="w"> </span>-a0<span class="w"> </span>-m1800<span class="w"> </span><span class="s1">'[REDACTED_HASH]'</span><span class="w"> </span>cherry-blossom.list
+</code></pre></div></td></tr></table></div>
+<p>С помощью полученного пароля был осуществлен в ход за пользователя <code>johan</code>. В домашней директории пользовался находился второй флаг в файле <code>user.txt</code>.</p>
+<p><img alt="Флаг user.txt" src="../cblossom-userflag.webp" /></p>
+<h2 id="t1068">Повышение привилегий, третий флаг — T1068</h2>
+<p>После получения доступа к системе в качестве <code>johan</code> было принято решение воспользоваться тулом <code>Linux Exploit Suggester</code> для сканирования системы на предмет CVE, к которым она уязвима.</p>
+<p><img alt="Вывод LSE" src="../cblossom-exploit_1.webp" /></p>
+<p>Среди обнаруженных результатов выбор пал на <code>CVE-2021-3493</code>. Для эксплуатации уязвимости на целевую систему с помощью <code>scp</code> был перемещён PoC для данной CVE, который был заранее скомпиллирован на атакующей машине.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gcc<span class="w"> </span>exploit.c<span class="w"> </span>-o<span class="w"> </span>file_1<span class="w"> </span>-static
+</code></pre></div></td></tr></table></div>
+<p>Уязвимость была успешно эксплуатирована, и в конечном итоге были получены рут права в системе. Третий флаг находился по пути <code>/root/root.txt</code>. Все три флага были добыты.</p>
+<p><img alt="Флаг root.txt" src="../cblossom-rootflag.webp" /></p>
+<h2 id="_7">Извлеченные уроки</h2>
+<ol>
+<li><strong>Отключить возможность анонимного доступа к общим сетевым папкам</strong>. Именно из-за того, что к сервису SMB был возможен анонимный доступ, был получен файл, содержащий чувствительные данные, который в итоге привел к доступу к системе по ssh.</li>
+<li><strong>Следить за правами доступа к чувствительным файлам в системе</strong>. Только потому, что найденный бэкап файла <code>shadow</code> предполагал права на чтение для всех пользователей, удалось извлечь хэш ещё одного пользователя в системе, который в конечном итоге привел к горизонтальному перемещению.</li>
+<li><strong>Своевременно обновлять систему</strong>. Из-за отсутствия необходимых патчей система была уязвима к <code>CVE-2021-3493</code>.</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
