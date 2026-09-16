@@ -2,25 +2,76 @@ site_name: .bdk writeups
 
 theme:
   name: material
+  features:
+    - toc.follow
+    - header.autohide
+  favicon: bdk_favicon.webp
+  logo: wr_logo.webp
   palette:
     - scheme: default
       toggle:
-        icon: material/brightness-7 
+        icon: material/lightbulb-outline
         name: Переключить на тёмную тему
     - scheme: slate
       toggle:
-        icon: material/brightness-4
+        icon: material/lightbulb
         name: Переключить на светлую тему
+  font:
+    text: Inter
+    code: JetBrains Mono
+   
 
 plugins:
   - search
+  - tags:
+      tags_file: tags.md
+  - social
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: datetime
+      locale: ru
+      timezone: Europe/Moscow
+  - glightbox:
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
 
 nav:
   - Главная: index.md
+  - 📑 Райтапы:
+      - 🪟 Windows:
+          - 'HTB: Administrator (Medium)': Windows/administrator.md
+      - 🐧 Linux:
+          - 'THM: CherryBlossom (Hard)': Linux/cherryblossom/cherryblossom.md
+  - Тэги: tags.md
 
 markdown_extensions:
   - admonition            
   - pymdownx.details      
-  - pymdownx.superfences  
+  - pymdownx.superfences
   - pymdownx.highlight:
-      linenums: true      
+      linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.blocks.caption:
+      types:
+        - caption
+        - name: screenshot
+          prefix: "Скриншот {}:"
+  - toc:
+      permalink: true
+      toc_depth: 3
+      title: "Оглавление"
+  - attr_list
+
+extra_css:
+  - stylesheets/custom.css

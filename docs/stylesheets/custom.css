@@ -1,0 +1,144 @@
+p { text-align: justify; }
+
+.md-typeset figure,
+.md-typeset figcaption,
+.md-typeset figcaption p {
+  text-align: center !important;
+}
+
+.glightbox-container .gslide-description {
+  display: none !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap');
+
+/* 1. Базовый шрифт, геометрия и отступы пунктов меню */
+.md-sidebar--primary .md-nav__link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: -0.01em;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.15s ease-in-out;
+}
+
+/* 2. Запрет на синий цвет во ВСЕХ состояниях (обычный, hover, focus, active) */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__link:hover,
+.md-sidebar--primary .md-nav__link:focus,
+.md-sidebar--primary .md-nav__link:focus-visible,
+.md-sidebar--primary .md-nav__link:active,
+.md-sidebar--primary .md-nav__link--active {
+  color: var(--md-default-fg-color) !important;
+  outline: none;
+}
+
+/* 3. Стрелочки и иконки меню без синего цвета */
+.md-sidebar--primary .md-nav__icon,
+.md-sidebar--primary .md-nav__link:hover .md-nav__icon,
+.md-sidebar--primary .md-nav__link:focus .md-nav__icon,
+.md-sidebar--primary .md-nav__link:focus-visible .md-nav__icon,
+.md-sidebar--primary .md-nav__link:active .md-nav__icon,
+.md-sidebar--primary .md-nav__link--active .md-nav__icon {
+  fill: var(--md-default-fg-color) !important;
+}
+
+/* 4. Мягкая нейтральная плашка при наведении (вместо смены цвета текста) */
+.md-sidebar--primary .md-nav__link:hover {
+  background-color: rgba(125, 125, 125, 0.08);
+}
+
+/* 5. Выделение активного пункта (текущей статьи/категории) плашкой и полужирным начертанием */
+.md-sidebar--primary .md-nav__link--active {
+  background-color: rgba(125, 125, 125, 0.12);
+  font-weight: 700;
+}
+
+/* 1. Шрифт JetBrains Mono и размер для всего оглавления */
+.md-sidebar--secondary .md-nav__link,
+.md-sidebar--secondary .md-nav__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+/* 2. Стиль заголовка оглавления (верхняя строчка) */
+.md-sidebar--secondary .md-nav__title {
+  position: static !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light) !important;
+  padding: 0 0 10px 0;
+  margin: 0;
+}
+
+/* 3. Аккуратная вертикальная полоса слева у текущего активного раздела */
+.md-sidebar--secondary .md-nav__link--active {
+  border-left: 2px solid var(--md-default-fg-color);
+  padding-left: 6px;
+  font-weight: 700;
+}
+
+/* 4. Замена громоздкого системного скроллбара на ультратонкий */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(125, 125, 125, 0.2) transparent;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 3px;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: rgba(125, 125, 125, 0.25);
+  border-radius: 4px;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background: rgba(125, 125, 125, 0.5);
+}
+
+/* 1. Убираем стандартную тень темы */
+.md-header {
+  box-shadow: none !important;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* 2. Эффект матового стекла и тонкая граница для светлой темы */
+[data-md-color-scheme="default"] .md-header {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--md-default-fg-color) !important;
+}
+
+/* Перекрашиваем иконки и текст в светлой теме под темный цвет текста */
+[data-md-color-scheme="default"] .md-header__topic,
+[data-md-color-scheme="default"] .md-header__button {
+  color: var(--md-default-fg-color) !important;
+}
+
+/* 3. Эффект матового стекла и граница для тёмной темы (Slate) */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: rgba(15, 23, 42, 0.8) !important; /* Глубокий темный фон */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 4. Стилизация названия блога в шапке в моноширинном стиле */
+.md-header__topic .md-ellipsis {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+/* Перекрашиваем логотип в белый цвет при переключении на тёмную тему */
+[data-md-color-scheme="slate"] .md-logo img {
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s ease;
+}
