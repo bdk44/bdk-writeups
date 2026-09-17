@@ -147,9 +147,9 @@ result: PNG image data, 1280 x 853, 8-bit/color RGB, non-interlaced
 
 ??? note "Полученное изображение"
     ![Изображение](images/cherryblossom/cblossom-stego.webp)
-/// screenshot
-Полученное изображение
-///
+    /// screenshot
+    Полученное изображение
+    ///
 
 Для анализа изображения на наличие скрытых файлов был использован тул `stegpy`.
 

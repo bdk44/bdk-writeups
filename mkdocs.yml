@@ -44,7 +44,7 @@ nav:
   - 🏡 Главная: index.md
   - 📑 Райтапы:
       - 🪟 Windows:
-          - 'HTB: Administrator (Medium)': Windows/administrator.md
+          - 'HTB: Administrator (Medium)': windows/administrator.md
       - 🐧 Linux:
           - 'THM: CherryBlossom (Hard)': linux/cherryblossom.md
   - 📓 Заметки: notes.md
