@@ -4,9 +4,10 @@ icon: simple/hackthebox
 tags:
   - Windows
   - Active Directory
+  - Medium
 ---
 
-:simple-hackthebox: [Комната на HackTheBox](https://app.hackthebox.com/machines/Administrator)
+:simple-hackthebox: [Комната на HackTheBox](https://app.hackthebox.com/machines/Administrator){:target="_blank"}
 
 !!! danger "ОБРАТИТЕ ВНИМАНИЕ!"
     В ходе написания райтапа и прикрепления вывода терминала/скриншотов с результатами работы различных тулов я не скрываю полученные хэши/пароли/флаги (иные подсказки) для того, чтобы люди, столкнувшиеся с определенными трудностями на каком-либо этапе, могли использовать мой райтап в качестве подсказки. Для тех, кто столкнулся с определенными сложностями в процессе компрометации данной машины, но не хочет получать готовые ответы, я использую спойлеры, под которыми находится вся секретная информация.
@@ -94,7 +95,7 @@ tags:
     Nmap done: 1 IP address (1 host up) scanned in 528.15 seconds
     ```
 
-После сканирования портов становится понятно, что представленный хост является контроллером домена Active Directory. Самыми примечательными на данный момент для нас являются порты `21 (ftp)` и `445 (smb)`. У нас есть со старта учетные данныые одного из пользователей домена: `Olivia:ichliebedich`.
+После сканирования портов становится понятно, что представленный хост является контроллером домена Active Directory. Самыми примечательными на данный момент для нас являются порты `21 (ftp)` и `445 (smb)`. У нас есть со старта учетные данные одного из пользователей домена: `Olivia:ichliebedich`.
 
 Перед подключением к SMB было принято решение проверить возможность аутентификации в `ftp` с имеющимися учетными данными. Однако, эта попытка не увенчалась успехом. У данного пользователя нет доступа к `ftp`.
 
@@ -196,7 +197,7 @@ ftp: Login failed
 !!! info "Обращаю Ваше внимание!"
     Пользователь `BDK44@administrator.htb` не существует в исследуемом домене. Эта точка на графе была добавлена мной намеренно для подтверждения того, что все описываемые в данном райтапе действия выполняются лично мной. Эти скриншоты были сделаны во время непосредственной компрометации домена.
 
-На скриншоте видно, что контролируемый нами юзер `olivia` имеет разрешение `GenericAll` в отношении юзера `michael`. В Active Directory разрешения и привилегии определяют, какие действия субъект (пользователь, группа или компьютер) может выполнять с другим объектом. Самым для нас примечательным является то, что мы, используя данное разрешение, можем сбросить пароль юзера `michael` и установить свой для того, чтобы затем аутентифицироваться от его имени. Более подробно разные методы эксплуатации данного разрешения описаны в хорошей статье за авторством [:notepad_spiral: Aarti Singh](https://www.hackingarticles.in/genericall-active-directory-abuse/).
+На скриншоте видно, что контролируемый нами юзер `olivia` имеет разрешение `GenericAll` в отношении юзера `michael`. В Active Directory разрешения и привилегии определяют, какие действия субъект (пользователь, группа или компьютер) может выполнять с другим объектом. Самым для нас примечательным является то, что мы, используя данное разрешение, можем сбросить пароль юзера `michael` и установить свой для того, чтобы затем аутентифицироваться от его имени. Более подробно разные методы эксплуатации данного разрешения описаны в хорошей статье за авторством [:notepad_spiral: Aarti Singh](https://www.hackingarticles.in/genericall-active-directory-abuse/){:target="_blank"}.
 
 Воспользуемся найденным разрешением и изменим пароль `michael` на известный нам с помощью тула `net`. После проведенной манипуляции сразу проверим доступность юзера с новым паролем с помощью `NetExec`.
 
@@ -221,7 +222,7 @@ ftp: Login failed
     ForceChangePassword (michael --> benjamin)
     ///
 
-На скриншоте № 2 видно, что ныне контролируемый нами юзер `michael` имеет разрешение `ForceChangePassword` в отношении юзера `benjamin`. Можно сказать, что перемещение от юзера `michael` к юзеру `benjamin` не будет ничем отличаться от перемещения от юзера `olivia` к юзеру `michael`, потому что мы точно также выполним сброс пароля с помощью того же тула (`net`). Обнаруженное разрешение `ForceChangePassword` позволяет нам это сделать. После ввода нового пароля сразу же проверим доступность скомпрометированного юзера `benjamin` с помощью `NetExec`.
+На скриншоте № 3 видно, что ныне контролируемый нами юзер `michael` имеет разрешение `ForceChangePassword` в отношении юзера `benjamin`. Можно сказать, что перемещение от юзера `michael` к юзеру `benjamin` не будет ничем отличаться от перемещения от юзера `olivia` к юзеру `michael`, потому что мы точно также выполним сброс пароля с помощью того же тула (`net`). Обнаруженное разрешение `ForceChangePassword` позволяет нам это сделать. После ввода нового пароля сразу же проверим доступность скомпрометированного юзера `benjamin` с помощью `NetExec`.
 
 === "net"
     ```console
@@ -390,6 +391,6 @@ ftp: Login failed
 
 ## Источники
 
-1. [:notepad_spiral: Abusing AD-DACL: Generic ALL Permissions от Aarti Singh](https://www.hackingarticles.in/genericall-active-directory-abuse/)
-2. [:notepad_spiral: Abusing AD-DACL: ForceChangePassword от Pradnya Pawar](https://www.hackingarticles.in/forcechangepassword-active-directory-abuse/)
-3. [:tools: targetedKerberoast.py от Charlie Bromberg](https://github.com/ShutdownRepo/targetedKerberoast)
+1. [:notepad_spiral: Abusing AD-DACL: Generic ALL Permissions от Aarti Singh](https://www.hackingarticles.in/genericall-active-directory-abuse/){:target="_blank"}
+2. [:notepad_spiral: Abusing AD-DACL: ForceChangePassword от Pradnya Pawar](https://www.hackingarticles.in/forcechangepassword-active-directory-abuse/){:target="_blank"}
+3. [:tools: targetedKerberoast.py от Charlie Bromberg](https://github.com/ShutdownRepo/targetedKerberoast){:target="_blank"}

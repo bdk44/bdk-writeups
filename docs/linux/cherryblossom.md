@@ -4,6 +4,7 @@ icon: simple/tryhackme
 tags:
   - Linux
   - Stego
+  - Hard
 ---
 
 :simple-tryhackme: [Комната на TryHackMe](https://tryhackme.com/room/cherryblossom)
