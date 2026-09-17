@@ -3,6 +3,7 @@ site_url: https://bdk44.github.io/
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - toc.follow
     - header.autohide

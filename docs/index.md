@@ -1,6 +1,7 @@
 ---
 hide:
   -toc
+comments: false
 ---
 
 ## Добро пожаловать! 👋
