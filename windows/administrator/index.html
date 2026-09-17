@@ -820,6 +820,13 @@
       
       
       
+        <a href="../../tags/#tag:medium" class="md-tag">Medium</a>
+      
+    
+      
+      
+      
+      
         <a href="../../tags/#tag:windows" class="md-tag">Windows</a>
       
     
@@ -829,7 +836,7 @@
 
   <h1>HTB: Administrator (Medium)</h1>
 
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg></span> <a href="https://app.hackthebox.com/machines/Administrator">Комната на HackTheBox</a></p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg></span> <a href="https://app.hackthebox.com/machines/Administrator" target="_blank">Комната на HackTheBox</a></p>
 <div class="admonition danger">
 <p class="admonition-title">ОБРАТИТЕ ВНИМАНИЕ!</p>
 <p>В ходе написания райтапа и прикрепления вывода терминала/скриншотов с результатами работы различных тулов я не скрываю полученные хэши/пароли/флаги (иные подсказки) для того, чтобы люди, столкнувшиеся с определенными трудностями на каком-либо этапе, могли использовать мой райтап в качестве подсказки. Для тех, кто столкнулся с определенными сложностями в процессе компрометации данной машины, но не хочет получать готовые ответы, я использую спойлеры, под которыми находится вся секретная информация.</p>
@@ -1022,7 +1029,7 @@
 <span class="go">Nmap done: 1 IP address (1 host up) scanned in 528.15 seconds</span>
 </code></pre></div></td></tr></tbody></table></div>
 </details>
-<p>После сканирования портов становится понятно, что представленный хост является контроллером домена Active Directory. Самыми примечательными на данный момент для нас являются порты <code>21 (ftp)</code> и <code>445 (smb)</code>. У нас есть со старта учетные данныые одного из пользователей домена: <code>Olivia:ichliebedich</code>.</p>
+<p>После сканирования портов становится понятно, что представленный хост является контроллером домена Active Directory. Самыми примечательными на данный момент для нас являются порты <code>21 (ftp)</code> и <code>445 (smb)</code>. У нас есть со старта учетные данные одного из пользователей домена: <code>Olivia:ichliebedich</code>.</p>
 <p>Перед подключением к SMB было принято решение проверить возможность аутентификации в <code>ftp</code> с имеющимися учетными данными. Однако, эта попытка не увенчалась успехом. У данного пользователя нет доступа к <code>ftp</code>.</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1169,7 +1176,7 @@
 <p class="admonition-title">Обращаю Ваше внимание!</p>
 <p>Пользователь <code>BDK44@administrator.htb</code> не существует в исследуемом домене. Эта точка на графе была добавлена мной намеренно для подтверждения того, что все описываемые в данном райтапе действия выполняются лично мной. Эти скриншоты были сделаны во время непосредственной компрометации домена.</p>
 </div>
-<p>На скриншоте видно, что контролируемый нами юзер <code>olivia</code> имеет разрешение <code>GenericAll</code> в отношении юзера <code>michael</code>. В Active Directory разрешения и привилегии определяют, какие действия субъект (пользователь, группа или компьютер) может выполнять с другим объектом. Самым для нас примечательным является то, что мы, используя данное разрешение, можем сбросить пароль юзера <code>michael</code> и установить свой для того, чтобы затем аутентифицироваться от его имени. Более подробно разные методы эксплуатации данного разрешения описаны в хорошей статье за авторством <a href="https://www.hackingarticles.in/genericall-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Aarti Singh</a>.</p>
+<p>На скриншоте видно, что контролируемый нами юзер <code>olivia</code> имеет разрешение <code>GenericAll</code> в отношении юзера <code>michael</code>. В Active Directory разрешения и привилегии определяют, какие действия субъект (пользователь, группа или компьютер) может выполнять с другим объектом. Самым для нас примечательным является то, что мы, используя данное разрешение, можем сбросить пароль юзера <code>michael</code> и установить свой для того, чтобы затем аутентифицироваться от его имени. Более подробно разные методы эксплуатации данного разрешения описаны в хорошей статье за авторством <a href="https://www.hackingarticles.in/genericall-active-directory-abuse/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Aarti Singh</a>.</p>
 <p>Воспользуемся найденным разрешением и изменим пароль <code>michael</code> на известный нам с помощью тула <code>net</code>. После проведенной манипуляции сразу проверим доступность юзера с новым паролем с помощью <code>NetExec</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">net</label><label for="__tabbed_3_2">NetExec</label></div>
 <div class="tabbed-content">
@@ -1199,7 +1206,7 @@
 </figcaption>
 </figure>
 </details>
-<p>На скриншоте № 2 видно, что ныне контролируемый нами юзер <code>michael</code> имеет разрешение <code>ForceChangePassword</code> в отношении юзера <code>benjamin</code>. Можно сказать, что перемещение от юзера <code>michael</code> к юзеру <code>benjamin</code> не будет ничем отличаться от перемещения от юзера <code>olivia</code> к юзеру <code>michael</code>, потому что мы точно также выполним сброс пароля с помощью того же тула (<code>net</code>). Обнаруженное разрешение <code>ForceChangePassword</code> позволяет нам это сделать. После ввода нового пароля сразу же проверим доступность скомпрометированного юзера <code>benjamin</code> с помощью <code>NetExec</code>.</p>
+<p>На скриншоте № 3 видно, что ныне контролируемый нами юзер <code>michael</code> имеет разрешение <code>ForceChangePassword</code> в отношении юзера <code>benjamin</code>. Можно сказать, что перемещение от юзера <code>michael</code> к юзеру <code>benjamin</code> не будет ничем отличаться от перемещения от юзера <code>olivia</code> к юзеру <code>michael</code>, потому что мы точно также выполним сброс пароля с помощью того же тула (<code>net</code>). Обнаруженное разрешение <code>ForceChangePassword</code> позволяет нам это сделать. После ввода нового пароля сразу же проверим доступность скомпрометированного юзера <code>benjamin</code> с помощью <code>NetExec</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">net</label><label for="__tabbed_4_2">NetExec</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1426,9 +1433,9 @@
 </ol>
 <h2 id="_4">Источники<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ol>
-<li><a href="https://www.hackingarticles.in/genericall-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: Generic ALL Permissions от Aarti Singh</a></li>
-<li><a href="https://www.hackingarticles.in/forcechangepassword-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: ForceChangePassword от Pradnya Pawar</a></li>
-<li><a href="https://github.com/ShutdownRepo/targetedKerberoast"><img alt="🛠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" title=":tools:"> targetedKerberoast.py от Charlie Bromberg</a></li>
+<li><a href="https://www.hackingarticles.in/genericall-active-directory-abuse/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: Generic ALL Permissions от Aarti Singh</a></li>
+<li><a href="https://www.hackingarticles.in/forcechangepassword-active-directory-abuse/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: ForceChangePassword от Pradnya Pawar</a></li>
+<li><a href="https://github.com/ShutdownRepo/targetedKerberoast" target="_blank"><img alt="🛠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" title=":tools:"> targetedKerberoast.py от Charlie Bromberg</a></li>
 </ol>
 
 
@@ -1452,7 +1459,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="17 сентября 2026 г. 09:50:59 MSK">17 сентября 2026 г. 09:50:59</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="17 сентября 2026 г. 10:33:27 MSK">17 сентября 2026 г. 10:33:27</span>
   </span>
 
     
