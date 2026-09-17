@@ -1,1 +1,1 @@
-{"mappings": [{"item": {"url": "linux/cherryblossom/", "title": "THM: CherryBlossom (Hard)"}, "tags": ["Linux", "Stego"]}]}
+{"mappings": [{"item": {"url": "linux/cherryblossom/", "title": "THM: CherryBlossom (Hard)"}, "tags": ["Linux", "Stego"]}, {"item": {"url": "windows/administrator/", "title": "HTB: Administrator (Medium)"}, "tags": ["Active Directory", "Windows"]}]}

