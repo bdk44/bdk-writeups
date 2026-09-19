@@ -46,6 +46,7 @@ nav:
   - 📑 Райтапы:
       - 🪟 Windows:
           - 'HTB: Administrator (Medium)': windows/administrator.md
+          - 'HTB: Sendai (Medium)': windows/sendai.md
       - 🐧 Linux:
           - 'THM: CherryBlossom (Hard)': linux/cherryblossom.md
   - 📓 Заметки: notes.md
