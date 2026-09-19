@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://bdk44.github.io/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-19</lastmod>
     </url>
     <url>
          <loc>https://bdk44.github.io/notes/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-19</lastmod>
     </url>
     <url>
          <loc>https://bdk44.github.io/tags/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-19</lastmod>
     </url>
     <url>
          <loc>https://bdk44.github.io/linux/cherryblossom/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-19</lastmod>
     </url>
     <url>
          <loc>https://bdk44.github.io/windows/administrator/</loc>
-         <lastmod>2026-09-17</lastmod>
+         <lastmod>2026-09-19</lastmod>
+    </url>
+    <url>
+         <loc>https://bdk44.github.io/windows/sendai/</loc>
+         <lastmod>2026-09-19</lastmod>
     </url>
 </urlset>
